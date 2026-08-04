@@ -1,0 +1,67 @@
+@use 'tailwindcss';
+@use './styles/theme';
+
+html,
+body {
+	background: var(--c-bg-primary);
+	color: var(--c-text);
+	font-family: var(--ff-base);
+	font-size: var(--fs);
+	letter-spacing: var(--letter-spacing);
+}
+
+body {
+	min-height: 100vh;
+	margin: 0;
+}
+
+h1,
+h2,
+h3 {
+	font-family: var(--ff-display);
+}
+
+a,
+button,
+input,
+select,
+textarea {
+	transition-duration: var(--motion-fast);
+	transition-property: background-color, border-color, box-shadow, color, opacity, transform;
+	transition-timing-function: var(--easing);
+}
+
+html[data-mode='dark'] {
+	h1,
+	h2,
+	h3 {
+		letter-spacing: 0.045em;
+	}
+
+	h1 {
+		text-shadow: var(--theme-glow);
+	}
+
+	.theme-interactive:hover,
+	a[class*='bg-[var(--c-primary)]']:hover {
+		box-shadow: var(--shadow-md);
+	}
+
+	header nav a {
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+	}
+}
+
+.theme-interactive {
+	transition-duration: var(--motion-fast);
+	transition-property: background-color, border-color, box-shadow, color, opacity, transform;
+	transition-timing-function: var(--easing);
+}
+
+.theme-focus {
+	&:focus-visible {
+		outline: none;
+		box-shadow: var(--focus-ring);
+	}
+}
