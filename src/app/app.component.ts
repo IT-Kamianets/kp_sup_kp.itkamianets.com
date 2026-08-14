@@ -1,7 +1,7 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, DestroyRef, effect, inject } from '@angular/core';
+import { Component, DestroyRef, computed, effect, inject, signal } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
-import { ActivatedRoute, NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { CanonicalService } from '@wawjs/ngx-default';
 import { LanguageService } from '@wawjs/ngx-translate';
 import { filter } from 'rxjs';
@@ -12,14 +12,22 @@ import { TopbarComponent } from './layouts/topbar/topbar.component';
 
 @Component({
 	selector: 'app-root',
-	imports: [RouterOutlet, TopbarComponent, FooterComponent],
+	imports: [RouterLink, RouterOutlet, TopbarComponent, FooterComponent],
 	template: `
-		<div class="flex min-h-screen flex-col">
+		<div [class]="appClass()">
 			<app-topbar />
-			<main class="flex-1">
+			<main [class]="mainClass()">
 				<router-outlet />
 			</main>
-			<app-footer />
+			<app-footer [class]="webFooterClass()" />
+			<nav
+				class="mobile-nav fixed inset-x-0 bottom-0 z-[1000] grid grid-cols-3 border-t border-[var(--c-border)] bg-[var(--c-bg-secondary)]/95 px-2 py-2 backdrop-blur md:hidden"
+				aria-label="Primary navigation"
+			>
+				<a [class]="mobileNavClass('/rules')" routerLink="/rules">Rules</a>
+				<a [class]="mobileNavClass('/map')" routerLink="/map">Map</a>
+				<a [class]="mobileNavClass('/book')" routerLink="/book">Book</a>
+			</nav>
 		</div>
 	`,
 })
@@ -31,6 +39,21 @@ export class App {
 	private readonly _router = inject(Router);
 	private readonly _activatedRoute = inject(ActivatedRoute);
 	private readonly _destroyRef = inject(DestroyRef);
+	private readonly _url = signal(this._router.url);
+	protected readonly currentPath = computed(() => this._url().split(/[?#]/)[0]);
+	protected readonly isMapPage = computed(() => this.currentPath() === '/map');
+	protected readonly showWebFooter = computed(() => ['', '/', '/rules'].includes(this.currentPath()));
+	protected readonly webFooterClass = computed(() =>
+		this.showWebFooter() ? 'hidden md:block' : 'hidden',
+	);
+	protected readonly appClass = computed(() =>
+		this.isMapPage()
+			? 'flex h-screen flex-col overflow-hidden pt-16'
+			: 'flex min-h-screen flex-col pt-16',
+	);
+	protected readonly mainClass = computed(() =>
+		this.isMapPage() ? 'min-h-0 flex-1 overflow-hidden' : 'flex-1 pb-14 md:pb-0',
+	);
 
 	constructor() {
 		this._canonicalService.initialize();
@@ -39,7 +62,10 @@ export class App {
 				filter((event): event is NavigationEnd => event instanceof NavigationEnd),
 				takeUntilDestroyed(this._destroyRef),
 			)
-			.subscribe((event) => this._updateRouteSeoExtras(event.urlAfterRedirects));
+			.subscribe((event) => {
+				this._url.set(event.urlAfterRedirects);
+				this._updateRouteSeoExtras(event.urlAfterRedirects);
+			});
 
 		effect(() => {
 			const language = this._languageService.language();
@@ -50,6 +76,11 @@ export class App {
 				this._document.documentElement.lang = htmlLang;
 			}
 		});
+	}
+
+	protected mobileNavClass(path: string): string {
+		const color = this.currentPath() === path ? 'text-[var(--c-primary)]' : 'text-[var(--c-text)]';
+		return `theme-focus flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-center text-sm font-semibold ${color}`;
 	}
 
 	private _updateRouteSeoExtras(url: string): void {

@@ -51,10 +51,6 @@
 						"assets": [
 							{
 								"glob": "**/*",
-								"input": "public"
-							},
-							{
-								"glob": "**/*",
 								"input": "src/assets"
 							},
 							{
@@ -63,7 +59,11 @@
 								"output": "/i18n/"
 							}
 						],
-						"styles": ["node_modules/@wawjs/ngx-ui/styles.css", "src/styles.scss"],
+						"styles": [
+							"node_modules/@wawjs/ngx-ui/styles.css",
+							"node_modules/leaflet/dist/leaflet.css",
+							"src/styles.scss"
+						],
 						"server": "src/main.server.ts",
 						"outputMode": "server",
 						"security": {

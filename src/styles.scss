@@ -65,3 +65,35 @@ html[data-mode='dark'] {
 		box-shadow: var(--focus-ring);
 	}
 }
+
+.map-marker {
+	display: grid;
+	height: 2.25rem;
+	width: 2.25rem;
+	place-items: center;
+	border: 3px solid white;
+	border-radius: 999px;
+	background: var(--c-primary);
+	box-shadow: 0 2px 10px rgb(15 23 42 / 0.4);
+	color: var(--c-on-primary);
+	font-size: 0.875rem;
+	font-weight: 800;
+}
+
+.mobile-nav a::before {
+	font-family: 'Material Symbols Outlined';
+	font-size: 1.125rem;
+	font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 20;
+}
+
+.mobile-nav a[href='/rules']::before {
+	content: 'verified_user';
+}
+
+.mobile-nav a[href='/map']::before {
+	content: 'map';
+}
+
+.mobile-nav a[href='/book']::before {
+	content: 'calendar_month';
+}
