@@ -1,9 +1,9 @@
 import { NgOptimizedImage } from '@angular/common';
 import { Component, computed, inject, signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
+import type { Language } from '@wawjs/ngx-translate';
 import { LanguageService, TranslateDirective, TranslateService } from '@wawjs/ngx-translate';
 import { ThemeService } from '@wawjs/ngx-ui';
-import type { Language } from '@wawjs/ngx-translate';
 import type { AppLanguage } from '../../../environments/environment.prod';
 import { CompanyService } from '../../feature/company/company.service';
 

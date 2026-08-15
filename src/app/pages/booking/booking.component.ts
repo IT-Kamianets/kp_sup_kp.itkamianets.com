@@ -46,7 +46,8 @@ export class BookingComponent {
 	);
 	protected readonly bookings = computed<ExistingBooking[]>(() => {
 		if (this.selectedDate() === _toIsoDate(this._today)) return [{ start: 15, end: 18 }];
-		if (this.selectedDate() === _toIsoDate(_addDays(this._today, 1))) return [{ start: 11, end: 14 }];
+		if (this.selectedDate() === _toIsoDate(_addDays(this._today, 1)))
+			return [{ start: 11, end: 14 }];
 		return [];
 	});
 	protected readonly startHours = START_HOURS;

@@ -17,7 +17,11 @@
 	<div class="journey-section">
 		<h2 class="picker-title">Оберіть подорож</h2>
 		@if (selectedJourneyOption(); as journey) {
-			<button class="journey-card journey-card--selected" (click)="clearJourney()" type="button">
+			<button
+				class="journey-card journey-card--selected"
+				(click)="clearJourney()"
+				type="button"
+			>
 				<strong>{{ journey.name }}</strong>
 				<span>{{ journey.duration }}</span>
 				<em>3 000 грн</em>
@@ -25,15 +29,11 @@
 		} @else {
 			<div class="journey-list">
 				@for (journey of journeys; track journey.id) {
-				<button
-					(click)="selectJourney(journey.id)"
-					class="journey-card"
-					type="button"
-				>
-					<strong>{{ journey.name }}</strong>
-					<span>{{ journey.duration }}</span>
-					<em>3 000 грн</em>
-				</button>
+					<button (click)="selectJourney(journey.id)" class="journey-card" type="button">
+						<strong>{{ journey.name }}</strong>
+						<span>{{ journey.duration }}</span>
+						<em>3 000 грн</em>
+					</button>
 				}
 			</div>
 		}
@@ -69,11 +69,24 @@
 		<form class="contact-form" (submit)="$event.preventDefault(); submit()">
 			<label>
 				<span>Ім’я</span>
-				<input [value]="name()" (input)="name.set($any($event.target).value)" autocomplete="name" required type="text" />
+				<input
+					[value]="name()"
+					(input)="name.set($any($event.target).value)"
+					autocomplete="name"
+					required
+					type="text"
+				/>
 			</label>
 			<label>
 				<span>Телефон</span>
-				<input [value]="phone()" (input)="phone.set($any($event.target).value)" autocomplete="tel" inputmode="tel" required type="tel" />
+				<input
+					[value]="phone()"
+					(input)="phone.set($any($event.target).value)"
+					autocomplete="tel"
+					inputmode="tel"
+					required
+					type="tel"
+				/>
 			</label>
 			<button class="submit-button" type="submit">Надіслати заявку</button>
 			@if (submitted()) {

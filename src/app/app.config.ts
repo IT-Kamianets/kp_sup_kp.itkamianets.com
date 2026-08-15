@@ -6,13 +6,13 @@ import {
 
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { provideRouter } from '@angular/router';
+import { provideNgxCore } from '@wawjs/ngx-core';
 import {
 	buildAbsoluteUrl,
 	buildSeoTitleSuffix,
 	provideNgxDefaultSeo,
 	stripTitleSuffix,
 } from '@wawjs/ngx-default';
-import { provideNgxCore } from '@wawjs/ngx-core';
 import { provideTranslate } from '@wawjs/ngx-translate';
 import { provideNgxUi } from '@wawjs/ngx-ui';
 import { environment } from '../environments/environment';

@@ -82,7 +82,9 @@ const FALLBACK_MEMBER = MEMBERS['olena.paddle'];
 export class ParticipatorComponent {
 	private readonly route = inject(ActivatedRoute);
 	private readonly metaService = inject(MetaService);
-	protected readonly member = computed(() => MEMBERS[this.route.snapshot.queryParamMap.get('username') ?? ''] ?? FALLBACK_MEMBER);
+	protected readonly member = computed(
+		() => MEMBERS[this.route.snapshot.queryParamMap.get('username') ?? ''] ?? FALLBACK_MEMBER,
+	);
 
 	constructor() {
 		const member = this.member();

@@ -1,7 +1,12 @@
 <section class="ranking-page">
 	<div class="ranking-panel">
 		<h1 translate="Рейтинг">Рейтинг</h1>
-		<p class="ranking-description" translate="Перегляньте, хто набрав найбільше балів на річці.">Перегляньте, хто набрав найбільше балів на річці.</p>
+		<p
+			class="ranking-description"
+			translate="Перегляньте, хто набрав найбільше балів на річці."
+		>
+			Перегляньте, хто набрав найбільше балів на річці.
+		</p>
 
 		<div class="periods" role="tablist" aria-label="Період рейтингу">
 			@for (item of periods; track item.value) {
@@ -20,8 +25,14 @@
 			@for (entry of entries(); track entry.name; let position = $index) {
 				<li>
 					<span class="position">{{ position + 1 }}</span>
-					<a [routerLink]="['/participator']" [queryParams]="{ username: entry.name.slice(1) }">{{ entry.name }}</a>
-					<span class="points">{{ entry.points }} <span translate="балів">балів</span></span>
+					<a
+						[routerLink]="['/participator']"
+						[queryParams]="{ username: entry.name.slice(1) }"
+						>{{ entry.name }}</a
+					>
+					<span class="points"
+						>{{ entry.points }} <span translate="балів">балів</span></span
+					>
 				</li>
 			}
 		</ol>

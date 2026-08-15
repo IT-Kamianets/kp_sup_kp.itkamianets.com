@@ -27,7 +27,8 @@ export const routes: Routes = [
 				canonicalPath: '/challenges',
 			},
 		},
-		loadComponent: () => import('./pages/challenges/challenges.component').then((m) => m.ChallengesComponent),
+		loadComponent: () =>
+			import('./pages/challenges/challenges.component').then((m) => m.ChallengesComponent),
 	},
 	{
 		path: 'points',
@@ -36,13 +37,15 @@ export const routes: Routes = [
 			meta: {
 				title: 'SUP челенджі та бали',
 				titleSuffix: ' | KP - SUP - KP',
-				description: 'Виконуй SUP-челенджі на Дністрі, знімай Stories та заробляй до 100 балів за одну SUP-пригоду з KP - SUP - KP.',
+				description:
+					'Виконуй SUP-челенджі на Дністрі, знімай Stories та заробляй до 100 балів за одну SUP-пригоду з KP - SUP - KP.',
 				image: buildAbsoluteUrl(companyProfile.siteUrl, '/social/home.png'),
 				robots: 'index, follow',
 				canonicalPath: '/points',
 			},
 		},
-		loadComponent: () => import('./pages/points/points.component').then((m) => m.PointsComponent),
+		loadComponent: () =>
+			import('./pages/points/points.component').then((m) => m.PointsComponent),
 	},
 	{
 		path: 'rules',
@@ -99,7 +102,8 @@ export const routes: Routes = [
 	{
 		path: 'ranking',
 		data: {
-			seoKeywords: 'SUP рейтинг, рейтинг SUP учасників, SUP Дністер, SUP Кам’янець-Подільський',
+			seoKeywords:
+				'SUP рейтинг, рейтинг SUP учасників, SUP Дністер, SUP Кам’янець-Подільський',
 			meta: {
 				title: 'Рейтинг учасників SUP-пригод',
 				titleSuffix: ' | KP - SUP - KP',
@@ -124,7 +128,9 @@ export const routes: Routes = [
 			},
 		},
 		loadComponent: () =>
-			import('./pages/participator/participator.component').then((m) => m.ParticipatorComponent),
+			import('./pages/participator/participator.component').then(
+				(m) => m.ParticipatorComponent,
+			),
 	},
 	{
 		path: '**',

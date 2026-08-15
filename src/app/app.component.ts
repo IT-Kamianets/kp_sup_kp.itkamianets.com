@@ -1,11 +1,11 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, DestroyRef, computed, effect, inject, signal } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Meta } from '@angular/platform-browser';
 import { ActivatedRoute, NavigationEnd, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { CanonicalService } from '@wawjs/ngx-default';
 import { LanguageService, TranslateDirective } from '@wawjs/ngx-translate';
 import { filter } from 'rxjs';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { environment } from '../environments/environment';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { TopbarComponent } from './layouts/topbar/topbar.component';
@@ -24,10 +24,16 @@ import { TopbarComponent } from './layouts/topbar/topbar.component';
 				class="mobile-nav fixed inset-x-0 bottom-0 z-[1000] flex items-center justify-between border-t border-[var(--c-border)] bg-[var(--c-bg-secondary)]/95 px-4 py-2 backdrop-blur md:hidden"
 				aria-label="Primary navigation"
 			>
-				<a [class]="mobileNavClass('/rules')" routerLink="/rules" translate="Правила">Правила</a>
-				<a [class]="mobileNavClass('/ranking')" routerLink="/ranking" translate="Рейтинг">Рейтинг</a>
+				<a [class]="mobileNavClass('/rules')" routerLink="/rules" translate="Правила"
+					>Правила</a
+				>
+				<a [class]="mobileNavClass('/ranking')" routerLink="/ranking" translate="Рейтинг"
+					>Рейтинг</a
+				>
 				<a [class]="mobileNavClass('/map')" routerLink="/map" translate="Карта">Карта</a>
-				<a [class]="mobileNavClass('/book')" routerLink="/book" translate="Бронювання">Бронювання</a>
+				<a [class]="mobileNavClass('/book')" routerLink="/book" translate="Бронювання"
+					>Бронювання</a
+				>
 			</nav>
 		</div>
 	`,
@@ -44,7 +50,9 @@ export class App {
 	protected readonly currentPath = computed(() => this._url().split(/[?#]/)[0]);
 	protected readonly isMapPage = computed(() => this.currentPath() === '/map');
 	protected readonly isChallengesPage = computed(() => this.currentPath() === '/challenges');
-	protected readonly showWebFooter = computed(() => ['', '/', '/rules'].includes(this.currentPath()));
+	protected readonly showWebFooter = computed(() =>
+		['', '/', '/rules'].includes(this.currentPath()),
+	);
 	protected readonly webFooterClass = computed(() =>
 		this.showWebFooter() ? 'hidden md:block' : 'hidden',
 	);
@@ -83,7 +91,8 @@ export class App {
 	}
 
 	protected mobileNavClass(path: string): string {
-		const color = this.currentPath() === path ? 'text-[var(--c-primary)]' : 'text-[var(--c-text)]';
+		const color =
+			this.currentPath() === path ? 'text-[var(--c-primary)]' : 'text-[var(--c-text)]';
 		return `theme-focus flex shrink-0 items-center justify-center gap-1.5 rounded-lg px-1 py-2 text-center text-xs font-semibold sm:gap-2 sm:px-3 sm:text-sm ${color}`;
 	}
 

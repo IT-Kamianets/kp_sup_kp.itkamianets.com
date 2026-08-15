@@ -18,9 +18,12 @@ export class ChallengesComponent {
 
 	constructor() {
 		effect(() => {
-			void this._translateService.loadExtraTranslations(['/data/points/i18n/', '/data/challenges/i18n/'], {
-				language: this._translateService.language(),
-			});
+			void this._translateService.loadExtraTranslations(
+				['/data/points/i18n/', '/data/challenges/i18n/'],
+				{
+					language: this._translateService.language(),
+				},
+			);
 		});
 	}
 
