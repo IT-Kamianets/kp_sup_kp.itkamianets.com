@@ -22,12 +22,13 @@ export const routes: Routes = [
 			seoKeywords:
 				'правила SUP, безпека на SUP, правила користування SUP, SUP Дністер, безпека на воді, відповідальність за SUP спорядження',
 			meta: {
-				title: 'Правила безпеки та користування SUP',
+				title: 'Правила безпеки для SUP-прогулянок',
 				titleSuffix: ' | KP - SUP - KP',
 				description:
-					'Правила участі в SUP-прогулянках KP - SUP - KP, вимоги безпеки на воді, умови користування спорядженням та відповідальність учасників.',
+					'Правила безпеки для SUP-прогулянок на Дністрі: спорядження, поведінка на воді, погодні умови та відповідальність учасників.',
 				image: buildAbsoluteUrl(companyProfile.siteUrl, '/social/rules.png'),
 				robots: 'index, follow',
+				canonicalPath: '/rules',
 			},
 		},
 		loadComponent: () => import('./pages/rules/rules.component').then((m) => m.RulesComponent),
@@ -38,12 +39,13 @@ export const routes: Routes = [
 			seoKeywords:
 				'SUP карта Дністра, маршрути SUP Кам’янець-Подільський, карта сап маршрутів, вітер на Дністрі, SUP локації, сплав Дністром, зупинки на Дністрі',
 			meta: {
-				title: 'Карта SUP-маршрутів на Дністрі та прогноз вітру',
+				title: 'Карта SUP-маршрутів на Дністрі',
 				titleSuffix: ' | KP - SUP - KP',
 				description:
-					'Переглядайте SUP-маршрути KP - SUP - KP на інтерактивній карті Дністра. Стартові точки, фініші, зупинки, цікаві локації, напрямок і швидкість вітру.',
+					'Інтерактивна карта перевірених SUP-маршрутів на Дністрі: стартові точки, фініші та зручне планування водної пригоди.',
 				image: buildAbsoluteUrl(companyProfile.siteUrl, '/social/map.png'),
 				robots: 'index, follow',
+				canonicalPath: '/map',
 			},
 		},
 		loadComponent: () => import('./pages/map/map.component').then((m) => m.MapComponent),
@@ -54,16 +56,47 @@ export const routes: Routes = [
 			seoKeywords:
 				'забронювати SUP, бронювання сапів, SUP Кам’янець-Подільський, SUP Дністер, прогулянка на сапах, SUP маршрут, активний відпочинок на Дністрі',
 			meta: {
-				title: 'Забронювати SUP-прогулянку на Дністрі',
+				title: 'Бронювання SUP-прогулянки на Дністрі',
 				titleSuffix: ' | KP - SUP - KP',
 				description:
-					'Оберіть дату, час і маршрут SUP-прогулянки на Дністрі. Мінімальна тривалість — 3 години. Групи до 4 осіб, трансфер із Кам’янця-Подільського.',
+					'Оберіть дату, час і маршрут для SUP-прогулянки на Дністрі. Невеликі групи, спорядження та трансфер із Кам’янця-Подільського.',
 				image: buildAbsoluteUrl(companyProfile.siteUrl, '/social/book.png'),
 				robots: 'index, follow',
+				canonicalPath: '/book',
 			},
 		},
 		loadComponent: () =>
 			import('./pages/booking/booking.component').then((m) => m.BookingComponent),
+	},
+	{
+		path: 'ranking',
+		data: {
+			seoKeywords: 'SUP рейтинг, рейтинг SUP учасників, SUP Дністер, SUP Кам’янець-Подільський',
+			meta: {
+				title: 'Рейтинг учасників SUP-пригод',
+				titleSuffix: ' | KP - SUP - KP',
+				description: 'Рейтинг учасників SUP-пригод на Дністрі за тиждень, місяць і рік.',
+				image: buildAbsoluteUrl(companyProfile.siteUrl, '/social/home.png'),
+				robots: 'index, follow',
+				canonicalPath: '/ranking',
+			},
+		},
+		loadComponent: () =>
+			import('./pages/ranking/ranking.component').then((m) => m.RankingComponent),
+	},
+	{
+		path: 'participator',
+		data: {
+			meta: {
+				title: 'Профіль учасника SUP',
+				titleSuffix: ' | KP - SUP - KP',
+				description: 'Досягнення, рейтинг та історії учасника SUP-пригод на Дністрі.',
+				robots: 'noindex, follow',
+				canonicalPath: '/participator',
+			},
+		},
+		loadComponent: () =>
+			import('./pages/participator/participator.component').then((m) => m.ParticipatorComponent),
 	},
 	{
 		path: '**',

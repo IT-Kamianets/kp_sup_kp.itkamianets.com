@@ -36,16 +36,16 @@ export class TopbarComponent {
 	protected readonly toggleLabel = computed(() => {
 		this.activeLanguage();
 		return this.mode() === 'dark'
-			? this._translateService.translate('Switch to light mode')()
-			: this._translateService.translate('Switch to dark mode')();
+			? this._translateService.translate('Увімкнути світлу тему')()
+			: this._translateService.translate('Увімкнути темну тему')();
 	});
 	protected readonly languageMenuLabel = computed(() => {
 		this.activeLanguage();
-		return this._translateService.translate('Open language menu')();
+		return this._translateService.translate('Відкрити меню мов')();
 	});
 	protected readonly languageCycleLabel = computed(() => {
 		this.activeLanguage();
-		return `${this._translateService.translate('Switch language to')()} ${this.getNextLanguage().nativeName}`;
+		return `${this._translateService.translate('Змінити мову на')()} ${this.getNextLanguage().nativeName}`;
 	});
 
 	constructor() {

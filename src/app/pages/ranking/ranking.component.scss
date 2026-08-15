@@ -1,0 +1,92 @@
+:host {
+	display: block;
+}
+
+.ranking-page {
+	min-height: 100%;
+	padding: 1rem;
+	background: var(--c-bg-primary);
+}
+
+.ranking-panel {
+	max-width: 46rem;
+	margin-inline: auto;
+	border: 1px solid var(--c-border);
+	border-radius: calc(var(--radius-card) * 2);
+	background: var(--c-bg-secondary);
+	padding: clamp(1.5rem, 5vw, 3rem);
+	box-shadow: var(--shadow-sm);
+}
+
+h1 {
+	font-size: clamp(2rem, 7vw, 3.5rem);
+	font-weight: 700;
+	color: var(--c-text-strong);
+}
+
+.ranking-description {
+	margin-top: 0.75rem;
+	color: var(--c-text);
+}
+
+.periods {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 0.5rem;
+	margin-top: 2rem;
+}
+
+.period {
+	border: 1px solid var(--c-border);
+	border-radius: 999px;
+	background: var(--c-bg-primary);
+	padding: 0.7rem;
+	font-size: 0.875rem;
+	font-weight: 700;
+	color: var(--c-text);
+}
+
+.period--active {
+	border-color: var(--c-primary);
+	background: var(--c-primary);
+	color: var(--c-on-primary);
+}
+
+.leaderboard {
+	display: grid;
+	gap: 0.75rem;
+	margin-top: 2rem;
+}
+
+.leaderboard li {
+	display: grid;
+	grid-template-columns: 2.25rem 1fr auto;
+	align-items: center;
+	gap: 0.75rem;
+	border: 1px solid var(--c-border);
+	border-radius: var(--radius-card);
+	padding: 0.9rem;
+	color: var(--c-text-strong);
+}
+
+.leaderboard a {
+	color: var(--c-text-strong);
+	font-weight: 700;
+}
+
+.position {
+	display: grid;
+	height: 2rem;
+	width: 2rem;
+	place-items: center;
+	border-radius: 999px;
+	background: color-mix(in srgb, var(--c-primary) 15%, transparent);
+	font-weight: 800;
+	color: var(--c-primary);
+}
+
+.points {
+	font-size: 0.875rem;
+	font-weight: 700;
+	color: var(--c-primary);
+}

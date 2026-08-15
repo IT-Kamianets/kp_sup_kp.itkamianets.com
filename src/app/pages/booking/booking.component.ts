@@ -51,12 +51,12 @@ export class BookingComponent {
 	});
 	protected readonly startHours = START_HOURS;
 	protected readonly dates = computed<BookingDate[]>(() => [
-		{ label: 'Today', value: _toIsoDate(this._today) },
-		{ label: 'Tomorrow', value: _toIsoDate(_addDays(this._today, 1)) },
+		{ label: 'Сьогодні', value: _toIsoDate(this._today) },
+		{ label: 'Завтра', value: _toIsoDate(_addDays(this._today, 1)) },
 		...Array.from({ length: 12 }, (_, index) => {
 			const date = _addDays(this._today, index + 2);
 			return {
-				label: new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short' }).format(date),
+				label: String(date.getDate()),
 				value: _toIsoDate(date),
 			};
 		}),

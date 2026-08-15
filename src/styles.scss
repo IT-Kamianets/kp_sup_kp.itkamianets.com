@@ -97,3 +97,7 @@ html[data-mode='dark'] {
 .mobile-nav a[href='/book']::before {
 	content: 'calendar_month';
 }
+
+.mobile-nav a[href='/ranking']::before {
+	content: 'trophy';
+}

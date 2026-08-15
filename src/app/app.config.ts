@@ -1,11 +1,9 @@
 import {
-	APP_INITIALIZER,
 	ApplicationConfig,
 	provideBrowserGlobalErrorListeners,
 	provideZonelessChangeDetection,
 } from '@angular/core';
 
-import { provideHttpClient, withFetch } from '@angular/common/http';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { provideRouter } from '@angular/router';
 import {
@@ -19,17 +17,12 @@ import { provideTranslate } from '@wawjs/ngx-translate';
 import { provideNgxUi } from '@wawjs/ngx-ui';
 import { environment } from '../environments/environment';
 import { routes } from './app.routes';
-import { BootstrapService } from './feature/bootstrap/bootstrap.service';
 import { companyProfile } from './feature/company/company.data';
-
-const initializeBootstrapData = (bootstrapService: BootstrapService) => () =>
-	bootstrapService.initialize();
 
 export const appConfig: ApplicationConfig = {
 	providers: [
 		provideBrowserGlobalErrorListeners(),
 		provideZonelessChangeDetection(),
-		provideHttpClient(withFetch()),
 		provideNgxCore({
 			meta: {
 				applyFromRoutes: true,
@@ -96,15 +89,14 @@ export const appConfig: ApplicationConfig = {
 		provideRouter(routes),
 		provideClientHydration(withEventReplay()),
 		provideTranslate({
-			defaultLanguage: environment.defaultLanguage,
-			languages: environment.languages,
+			defaultLanguage: 'ua',
+			language: 'ua',
+			persistLanguage: true,
+			languages: [
+				...environment.languages.filter((language) => language.code === 'ua'),
+				...environment.languages.filter((language) => language.code !== 'ua'),
+			],
 			folder: '/i18n/',
 		}),
-		{
-			provide: APP_INITIALIZER,
-			useFactory: initializeBootstrapData,
-			deps: [BootstrapService],
-			multi: true,
-		},
 	],
 };

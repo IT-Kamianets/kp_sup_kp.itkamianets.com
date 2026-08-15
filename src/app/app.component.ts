@@ -3,7 +3,7 @@ import { Component, DestroyRef, computed, effect, inject, signal } from '@angula
 import { Meta } from '@angular/platform-browser';
 import { ActivatedRoute, NavigationEnd, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { CanonicalService } from '@wawjs/ngx-default';
-import { LanguageService } from '@wawjs/ngx-translate';
+import { LanguageService, TranslateDirective } from '@wawjs/ngx-translate';
 import { filter } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { environment } from '../environments/environment';
@@ -12,7 +12,7 @@ import { TopbarComponent } from './layouts/topbar/topbar.component';
 
 @Component({
 	selector: 'app-root',
-	imports: [RouterLink, RouterOutlet, TopbarComponent, FooterComponent],
+	imports: [RouterLink, RouterOutlet, TopbarComponent, FooterComponent, TranslateDirective],
 	template: `
 		<div [class]="appClass()">
 			<app-topbar />
@@ -21,12 +21,13 @@ import { TopbarComponent } from './layouts/topbar/topbar.component';
 			</main>
 			<app-footer [class]="webFooterClass()" />
 			<nav
-				class="mobile-nav fixed inset-x-0 bottom-0 z-[1000] grid grid-cols-3 border-t border-[var(--c-border)] bg-[var(--c-bg-secondary)]/95 px-2 py-2 backdrop-blur md:hidden"
+				class="mobile-nav fixed inset-x-0 bottom-0 z-[1000] flex items-center justify-between border-t border-[var(--c-border)] bg-[var(--c-bg-secondary)]/95 px-4 py-2 backdrop-blur md:hidden"
 				aria-label="Primary navigation"
 			>
-				<a [class]="mobileNavClass('/rules')" routerLink="/rules">Rules</a>
-				<a [class]="mobileNavClass('/map')" routerLink="/map">Map</a>
-				<a [class]="mobileNavClass('/book')" routerLink="/book">Book</a>
+				<a [class]="mobileNavClass('/rules')" routerLink="/rules" translate="Правила">Правила</a>
+				<a [class]="mobileNavClass('/ranking')" routerLink="/ranking" translate="Рейтинг">Рейтинг</a>
+				<a [class]="mobileNavClass('/map')" routerLink="/map" translate="Карта">Карта</a>
+				<a [class]="mobileNavClass('/book')" routerLink="/book" translate="Бронювання">Бронювання</a>
 			</nav>
 		</div>
 	`,
@@ -80,7 +81,7 @@ export class App {
 
 	protected mobileNavClass(path: string): string {
 		const color = this.currentPath() === path ? 'text-[var(--c-primary)]' : 'text-[var(--c-text)]';
-		return `theme-focus flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-center text-sm font-semibold ${color}`;
+		return `theme-focus flex shrink-0 items-center justify-center gap-1.5 rounded-lg px-1 py-2 text-center text-xs font-semibold sm:gap-2 sm:px-3 sm:text-sm ${color}`;
 	}
 
 	private _updateRouteSeoExtras(url: string): void {

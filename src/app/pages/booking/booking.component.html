@@ -1,5 +1,6 @@
-<section class="booking-page" aria-label="Choose a booking date">
-	<h1 class="picker-title">Оберіть день</h1>
+<section class="booking-page" aria-label="Бронювання SUP-прогулянки">
+	<h1 class="sr-only">Бронювання SUP-прогулянки на Дністрі</h1>
+	<h2 class="picker-title">Оберіть день</h2>
 	<div class="date-list">
 		@for (date of dates(); track date.value) {
 			<button
@@ -40,11 +41,11 @@
 
 	@if (selectedJourneyOption()) {
 		<div class="time-section">
-			<h2 class="picker-title">Choose a start time</h2>
+			<h2 class="picker-title">Оберіть час старту</h2>
 			@if (bookings().length) {
 				<div class="booking-list">
 					@for (booking of bookings(); track booking.start) {
-						<span>Booked: {{ booking.start }}:00–{{ booking.end }}:00</span>
+						<span>Зайнято: {{ booking.start }}:00–{{ booking.end }}:00</span>
 					}
 				</div>
 			}
@@ -67,16 +68,16 @@
 	@if (selectedStartHour() !== null) {
 		<form class="contact-form" (submit)="$event.preventDefault(); submit()">
 			<label>
-				<span>Name</span>
+				<span>Ім’я</span>
 				<input [value]="name()" (input)="name.set($any($event.target).value)" autocomplete="name" required type="text" />
 			</label>
 			<label>
-				<span>Phone</span>
+				<span>Телефон</span>
 				<input [value]="phone()" (input)="phone.set($any($event.target).value)" autocomplete="tel" inputmode="tel" required type="tel" />
 			</label>
-			<button class="submit-button" type="submit">Submit booking</button>
+			<button class="submit-button" type="submit">Надіслати заявку</button>
 			@if (submitted()) {
-				<p class="form-success">Your booking request is ready to send.</p>
+				<p class="form-success">Вашу заявку на бронювання готово до надсилання.</p>
 			}
 		</form>
 	}
