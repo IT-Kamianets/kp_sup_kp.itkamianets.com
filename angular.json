@@ -57,6 +57,11 @@
 								"glob": "**/*.json",
 								"input": "src/i18n",
 								"output": "/i18n/"
+							},
+							{
+								"glob": "**/i18n/*.json",
+								"input": "src/data",
+								"output": "/data/"
 							}
 						],
 						"styles": [

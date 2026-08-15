@@ -17,6 +17,34 @@ export const routes: Routes = [
 			import('./pages/landing/landing.component').then((m) => m.LandingComponent),
 	},
 	{
+		path: 'challenges',
+		data: {
+			meta: {
+				title: 'Випадковий SUP-челендж',
+				titleSuffix: ' | KP - SUP - KP',
+				description: 'Отримай випадковий SUP-челендж для своєї пригоди на Дністрі.',
+				robots: 'index, follow',
+				canonicalPath: '/challenges',
+			},
+		},
+		loadComponent: () => import('./pages/challenges/challenges.component').then((m) => m.ChallengesComponent),
+	},
+	{
+		path: 'points',
+		data: {
+			seoKeywords: 'SUP челенджі, бали за SUP, SUP Stories, SUP Дністер, KP SUP KP',
+			meta: {
+				title: 'SUP челенджі та бали',
+				titleSuffix: ' | KP - SUP - KP',
+				description: 'Виконуй SUP-челенджі на Дністрі, знімай Stories та заробляй до 100 балів за одну SUP-пригоду з KP - SUP - KP.',
+				image: buildAbsoluteUrl(companyProfile.siteUrl, '/social/home.png'),
+				robots: 'index, follow',
+				canonicalPath: '/points',
+			},
+		},
+		loadComponent: () => import('./pages/points/points.component').then((m) => m.PointsComponent),
+	},
+	{
 		path: 'rules',
 		data: {
 			seoKeywords:

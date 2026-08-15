@@ -168,6 +168,57 @@
 	color: var(--c-text);
 }
 
+.points-promo {
+	display: grid;
+	gap: 1.25rem;
+	margin-top: 2rem;
+	border: 1px solid color-mix(in srgb, var(--c-primary) 45%, var(--c-border));
+	border-radius: calc(var(--radius-card) * 1.35);
+	background: color-mix(in srgb, var(--c-primary) 8%, var(--c-bg-secondary));
+	padding: 1.5rem;
+}
+
+.points-promo > div > p {
+	color: var(--c-primary);
+	font-size: .75rem;
+	font-weight: 800;
+	letter-spacing: .16em;
+	text-transform: uppercase;
+}
+
+.points-promo h2 {
+	margin-top: .6rem;
+	font-size: clamp(1.45rem, 4vw, 2rem);
+	font-weight: 700;
+	color: var(--c-text-strong);
+}
+
+.points-promo > div > span {
+	display: block;
+	margin-top: .7rem;
+	color: var(--c-text);
+	line-height: 1.6;
+}
+
+.points-promo__examples {
+	display: grid;
+	gap: .5rem;
+}
+
+.points-promo__examples p {
+	display: flex;
+	justify-content: space-between;
+	gap: 1rem;
+	border-radius: .75rem;
+	background: var(--c-bg-primary);
+	padding: .7rem .8rem;
+	color: var(--c-text-strong);
+	font-size: .875rem;
+}
+
+.points-promo__examples span { color: var(--c-primary); font-weight: 800; white-space: nowrap; }
+.points-promo > a { color: var(--c-primary); font-size: .9rem; font-weight: 800; }
+
 .route-list a {
 	margin-top: auto;
 	padding-top: 1.5rem;

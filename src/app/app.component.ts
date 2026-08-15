@@ -43,17 +43,20 @@ export class App {
 	private readonly _url = signal(this._router.url);
 	protected readonly currentPath = computed(() => this._url().split(/[?#]/)[0]);
 	protected readonly isMapPage = computed(() => this.currentPath() === '/map');
+	protected readonly isChallengesPage = computed(() => this.currentPath() === '/challenges');
 	protected readonly showWebFooter = computed(() => ['', '/', '/rules'].includes(this.currentPath()));
 	protected readonly webFooterClass = computed(() =>
 		this.showWebFooter() ? 'hidden md:block' : 'hidden',
 	);
 	protected readonly appClass = computed(() =>
-		this.isMapPage()
+		this.isMapPage() || this.isChallengesPage()
 			? 'flex h-screen flex-col overflow-hidden pt-16'
 			: 'flex min-h-screen flex-col pt-16',
 	);
 	protected readonly mainClass = computed(() =>
-		this.isMapPage() ? 'min-h-0 flex-1 overflow-hidden' : 'flex-1 pb-14 md:pb-0',
+		this.isMapPage() || this.isChallengesPage()
+			? 'min-h-0 flex-1 overflow-hidden'
+			: 'flex-1 pb-14 md:pb-0',
 	);
 
 	constructor() {

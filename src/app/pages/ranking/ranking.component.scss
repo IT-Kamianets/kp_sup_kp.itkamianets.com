@@ -90,3 +90,29 @@ h1 {
 	font-weight: 700;
 	color: var(--c-primary);
 }
+
+.ranking-points {
+	margin-top: 2rem;
+	border-top: 1px solid var(--c-border);
+	padding-top: 1.5rem;
+}
+
+.ranking-points h2 {
+	font-size: 1.25rem;
+	font-weight: 700;
+	color: var(--c-text-strong);
+}
+
+.ranking-points p {
+	margin-top: 0.65rem;
+	color: var(--c-text);
+	line-height: 1.6;
+}
+
+.ranking-points a {
+	display: inline-flex;
+	margin-top: 1rem;
+	color: var(--c-primary);
+	font-size: 0.9rem;
+	font-weight: 800;
+}

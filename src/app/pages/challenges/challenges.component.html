@@ -1,0 +1,38 @@
+<section
+	class="challenge-player"
+	(pointerdown)="onPointerStart($event)"
+	(pointerup)="onPointerEnd($event)"
+	(wheel)="onWheel($event)"
+	(keydown.arrowup)="advanceChallenge()"
+	(keydown.arrowdown)="advanceChallenge()"
+	tabindex="0"
+>
+	<div
+		class="challenge-stack"
+		[class.challenge-stack--advancing]="isAdvancing()"
+		[class.challenge-stack--resetting]="isResetting()"
+	>
+		<article class="challenge-card challenge-card--active" aria-live="polite">
+			<p>{{ translate('Випадковий SUP-челендж') }}</p>
+			<span class="challenge-number">№{{ activeChallenge().id }}</span>
+			<h1>{{ translate(activeChallenge().title) }}</h1>
+			<p class="challenge-description">{{ translate(activeChallenge().description) }}</p>
+			<strong>+{{ activeChallenge().points }} <small>балів</small></strong>
+		</article>
+		<article class="challenge-card challenge-card--next" aria-hidden="true">
+			<p>{{ translate('Випадковий SUP-челендж') }}</p>
+			<span class="challenge-number">№{{ nextChallenge().id }}</span>
+			<h2>{{ translate(nextChallenge().title) }}</h2>
+			<p class="challenge-description">{{ translate(nextChallenge().description) }}</p>
+			<strong>+{{ nextChallenge().points }} <small>балів</small></strong>
+		</article>
+	</div>
+	<div class="swipe-hint">
+		<span class="material-symbols-outlined">keyboard_arrow_up</span>
+		<span>{{ translate('Проведи вгору для наступного челенджу') }}</span>
+		<button (click)="advanceChallenge()" type="button">
+			<span class="material-symbols-outlined" aria-hidden="true">shuffle</span>
+			Наступний челендж
+		</button>
+	</div>
+</section>

@@ -33,6 +33,11 @@
 					routerLink="/rules"
 					>Правила</a
 				>
+				<a
+					class="theme-focus rounded-full px-3 py-2 text-sm font-semibold text-[var(--c-text)] hover:bg-[var(--c-bg-tertiary)]"
+					routerLink="/ranking"
+					>Рейтинг</a
+				>
 			</nav>
 			<div
 				class="relative flex items-center gap-1 rounded-full border border-[var(--c-border)] bg-[var(--c-bg-primary)] p-1 shadow-[var(--shadow-sm)]"
@@ -98,6 +103,14 @@
 					{{ toggleIcon() }}
 				</span>
 			</button>
+
+			<a
+				class="theme-interactive theme-focus inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--c-border)] bg-[var(--c-bg-primary)] text-[var(--c-text-strong)] hover:bg-[var(--c-bg-tertiary)]"
+				aria-label="Випадковий SUP-челендж"
+				routerLink="/challenges"
+			>
+				<span class="material-symbols-outlined text-[22px]" aria-hidden="true">bolt</span>
+			</a>
 		</div>
 	</div>
 </header>
