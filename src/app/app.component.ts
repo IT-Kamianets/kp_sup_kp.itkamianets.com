@@ -4,15 +4,26 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Meta } from '@angular/platform-browser';
 import { ActivatedRoute, NavigationEnd, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { CanonicalService } from '@wawjs/ngx-default';
+import { MessageService } from '@wawjs/ngx-prime/api';
+import { ToastModule } from '@wawjs/ngx-prime/toast';
 import { LanguageService, TranslateDirective } from '@wawjs/ngx-translate';
 import { filter } from 'rxjs';
 import { environment } from '../environments/environment';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { TopbarComponent } from './layouts/topbar/topbar.component';
+import { ThemeState } from './theme/app.theme';
 
 @Component({
 	selector: 'app-root',
-	imports: [RouterLink, RouterOutlet, TopbarComponent, FooterComponent, TranslateDirective],
+	imports: [
+		RouterLink,
+		RouterOutlet,
+		TopbarComponent,
+		FooterComponent,
+		TranslateDirective,
+		ToastModule,
+	],
+	providers: [MessageService],
 	template: `
 		<div [class]="appClass()">
 			<app-topbar />
@@ -20,6 +31,7 @@ import { TopbarComponent } from './layouts/topbar/topbar.component';
 				<router-outlet />
 			</main>
 			<app-footer [class]="webFooterClass()" />
+			<p-toast />
 			<nav
 				class="mobile-nav fixed inset-x-0 bottom-0 z-[1000] flex items-center justify-between border-t border-[var(--c-border)] bg-[var(--c-bg-secondary)]/95 px-4 py-2 backdrop-blur md:hidden"
 				aria-label="Primary navigation"
@@ -46,6 +58,7 @@ export class App {
 	private readonly _router = inject(Router);
 	private readonly _activatedRoute = inject(ActivatedRoute);
 	private readonly _destroyRef = inject(DestroyRef);
+	private readonly _themeState = inject(ThemeState);
 	private readonly _url = signal(this._router.url);
 	protected readonly currentPath = computed(() => this._url().split(/[?#]/)[0]);
 	protected readonly isMapPage = computed(() => this.currentPath() === '/map');

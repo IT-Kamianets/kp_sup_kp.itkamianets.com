@@ -1,0 +1,8 @@
+<article class="short" [class.short--card]="variant === 'card'">
+	<span class="short__number">№{{ entity.id }}</span>
+	<div class="short__body">
+		<h3 class="short__title">{{ entity.title }}</h3>
+		<p class="short__description">{{ entity.description }}</p>
+	</div>
+	<p-tag class="short__points" [value]="'+' + entity.points + ' балів'" severity="success" />
+</article>

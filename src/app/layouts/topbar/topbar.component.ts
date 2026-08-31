@@ -1,27 +1,28 @@
 import { NgOptimizedImage } from '@angular/common';
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
+import { ButtonModule } from '@wawjs/ngx-prime/button';
+import { PopoverModule } from '@wawjs/ngx-prime/popover';
 import type { Language } from '@wawjs/ngx-translate';
 import { LanguageService, TranslateDirective, TranslateService } from '@wawjs/ngx-translate';
-import { ThemeService } from '@wawjs/ngx-ui';
 import type { AppLanguage } from '../../../environments/environment.prod';
 import { CompanyService } from '../../feature/company/company.service';
+import { ThemeState } from '../../theme/app.theme';
 
 @Component({
 	selector: 'app-topbar',
-	imports: [NgOptimizedImage, RouterLink, TranslateDirective],
+	imports: [NgOptimizedImage, RouterLink, TranslateDirective, ButtonModule, PopoverModule],
 	templateUrl: './topbar.component.html',
 	styleUrl: './topbar.component.scss',
 })
 export class TopbarComponent {
 	private readonly _translateService = inject(TranslateService);
-	private readonly _themeService = inject(ThemeService);
+	private readonly _themeState = inject(ThemeState);
 	private readonly _languageService = inject(LanguageService);
 	private readonly _companyService = inject(CompanyService);
 	private readonly _router = inject(Router);
 
-	protected readonly mode = computed(() => this._themeService.mode() ?? 'light');
-	protected readonly languageMenuOpen = signal(false);
+	protected readonly mode = this._themeState.mode;
 	protected readonly languages = computed(() =>
 		this._languageService.languages().map((language) => _toAppLanguage(language)),
 	);
@@ -48,30 +49,20 @@ export class TopbarComponent {
 		return `${this._translateService.translate('Змінити мову на')()} ${this.getNextLanguage().nativeName}`;
 	});
 
-	constructor() {
-		this._themeService.init();
-	}
-
 	protected toggleMode() {
 		const nextMode = this.mode() === 'dark' ? 'light' : 'dark';
-		this._themeService.setMode(nextMode);
+		this._themeState.setMode(nextMode);
 	}
 
 	protected async nextLanguage() {
 		const nextLanguage = this.getNextLanguage();
 		await this._translateService.setLanguage(nextLanguage.code);
 		await this._router.navigateByUrl(this._router.url);
-		this.languageMenuOpen.set(false);
-	}
-
-	protected toggleLanguageMenu() {
-		this.languageMenuOpen.update((open) => !open);
 	}
 
 	protected async setLanguage(language: AppLanguage) {
 		await this._translateService.setLanguage(language.code);
 		await this._router.navigateByUrl(this._router.url);
-		this.languageMenuOpen.set(false);
 	}
 
 	protected getNextLanguage() {

@@ -18,99 +18,87 @@
 
 		<div class="flex items-center gap-2">
 			<nav class="hidden items-center gap-1 md:flex" aria-label="Основна навігація">
-				<a
-					class="theme-focus rounded-full px-3 py-2 text-sm font-semibold text-[var(--c-text)] hover:bg-[var(--c-bg-tertiary)]"
-					routerLink="/map"
-					>Карта</a
-				>
-				<a
-					class="theme-focus rounded-full px-3 py-2 text-sm font-semibold text-[var(--c-text)] hover:bg-[var(--c-bg-tertiary)]"
-					routerLink="/book"
-					>Бронювання</a
-				>
-				<a
-					class="theme-focus rounded-full px-3 py-2 text-sm font-semibold text-[var(--c-text)] hover:bg-[var(--c-bg-tertiary)]"
-					routerLink="/rules"
-					>Правила</a
-				>
-				<a
-					class="theme-focus rounded-full px-3 py-2 text-sm font-semibold text-[var(--c-text)] hover:bg-[var(--c-bg-tertiary)]"
-					routerLink="/ranking"
-					>Рейтинг</a
-				>
+				<a pButton routerLink="/map" text rounded severity="secondary">Карта</a>
+				<a pButton routerLink="/book" text rounded severity="secondary">Бронювання</a>
+				<a pButton routerLink="/rules" text rounded severity="secondary">Правила</a>
+				<a pButton routerLink="/ranking" text rounded severity="secondary">Рейтинг</a>
 			</nav>
-			<div
-				class="relative flex items-center gap-1 rounded-full border border-[var(--c-border)] bg-[var(--c-bg-primary)] p-1 shadow-[var(--shadow-sm)]"
-			>
-				<button
-					class="theme-interactive theme-focus inline-flex h-9 items-center gap-2 rounded-full px-3 text-sm font-medium text-[var(--c-text)] hover:bg-[var(--c-bg-tertiary)]"
-					[attr.aria-label]="languageCycleLabel()"
-					(click)="nextLanguage()"
-					type="button"
-				>
-					<img
-						class="h-5 w-7 rounded-[4px] border border-black/10 object-cover"
-						[alt]="currentLanguage().nativeName"
-						[ngSrc]="currentLanguage().flagSrc"
-						width="28"
-						height="20"
-					/>
-				</button>
-
-				<button
-					class="theme-interactive theme-focus inline-flex h-9 w-9 items-center justify-center rounded-full text-[var(--c-text-strong)] hover:bg-[var(--c-bg-tertiary)]"
-					[attr.aria-expanded]="languageMenuOpen()"
-					[attr.aria-label]="languageMenuLabel()"
-					(click)="toggleLanguageMenu()"
-					type="button"
-				>
-					<span class="material-symbols-outlined text-[20px]" aria-hidden="true">
-						arrow_drop_down
-					</span>
-				</button>
-
-				@if (languageMenuOpen()) {
-					<div
-						class="absolute right-0 top-[calc(100%+0.5rem)] z-50 min-w-48 overflow-hidden rounded-2xl border border-[var(--c-border)] bg-[var(--c-bg-primary)] p-1 shadow-[var(--shadow-md)]"
-					>
-						@for (language of languages(); track language.code) {
-							<button
-								class="theme-interactive theme-focus flex w-full items-center gap-3 rounded-[calc(var(--radius-btn)-0.25rem)] px-3 py-2 text-left text-sm text-[var(--c-text)] hover:bg-[var(--c-bg-tertiary)]"
-								(click)="setLanguage(language)"
-								type="button"
-							>
-								<img
-									class="h-5 w-7 rounded-[4px] border border-black/10 object-cover"
-									[alt]="language.nativeName"
-									[ngSrc]="language.flagSrc"
-									width="28"
-									height="20"
-								/>
-								<span>{{ language.nativeName }}</span>
-							</button>
-						}
-					</div>
-				}
-			</div>
 
 			<button
-				class="theme-interactive theme-focus inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--c-border)] bg-[var(--c-bg-primary)] text-[var(--c-text-strong)] hover:bg-[var(--c-bg-tertiary)]"
-				[attr.aria-label]="toggleLabel()"
-				(click)="toggleMode()"
+				pButton
 				type="button"
+				rounded
+				text
+				severity="secondary"
+				class="!h-9 !gap-2"
+				[attr.aria-label]="languageCycleLabel()"
+				(click)="nextLanguage()"
 			>
-				<span class="material-symbols-outlined text-[22px]" aria-hidden="true">
-					{{ toggleIcon() }}
-				</span>
+				<img
+					class="h-5 w-7 rounded-[4px] border border-black/10 object-cover"
+					[alt]="currentLanguage().nativeName"
+					[ngSrc]="currentLanguage().flagSrc"
+					width="28"
+					height="20"
+				/>
 			</button>
 
+			<button
+				pButton
+				type="button"
+				rounded
+				text
+				severity="secondary"
+				icon="pi pi-angle-down"
+				[attr.aria-label]="languageMenuLabel()"
+				(click)="languagePopover.toggle($event)"
+			></button>
+
+			<p-popover #languagePopover>
+				<div class="flex min-w-48 flex-col gap-1">
+					@for (language of languages(); track language.code) {
+						<button
+							pButton
+							type="button"
+							text
+							class="!justify-start !gap-3"
+							(click)="setLanguage(language); languagePopover.hide()"
+						>
+							<img
+								class="h-5 w-7 rounded-[4px] border border-black/10 object-cover"
+								[alt]="language.nativeName"
+								[ngSrc]="language.flagSrc"
+								width="28"
+								height="20"
+							/>
+							<span>{{ language.nativeName }}</span>
+						</button>
+					}
+				</div>
+			</p-popover>
+
+			<button
+				pButton
+				type="button"
+				rounded
+				text
+				severity="secondary"
+				class="!h-11 !w-11"
+				[icon]="mode() === 'dark' ? 'pi pi-sun' : 'pi pi-moon'"
+				[attr.aria-label]="toggleLabel()"
+				(click)="toggleMode()"
+			></button>
+
 			<a
-				class="theme-interactive theme-focus inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--c-border)] bg-[var(--c-bg-primary)] text-[var(--c-text-strong)] hover:bg-[var(--c-bg-tertiary)]"
-				aria-label="Випадковий SUP-челендж"
+				pButton
 				routerLink="/challenges"
-			>
-				<span class="material-symbols-outlined text-[22px]" aria-hidden="true">bolt</span>
-			</a>
+				rounded
+				text
+				severity="secondary"
+				class="!h-11 !w-11"
+				icon="pi pi-bolt"
+				aria-label="Випадковий SUP-челендж"
+			></a>
 		</div>
 	</div>
 </header>
