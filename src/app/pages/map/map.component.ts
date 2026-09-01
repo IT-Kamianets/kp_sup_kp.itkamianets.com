@@ -1,5 +1,5 @@
 import { afterNextRender, Component, effect, inject } from '@angular/core';
-import { ThemeService } from '@wawjs/ngx-ui';
+import { ThemeState } from '../../theme/app.theme';
 import type { Map, TileLayer } from 'leaflet';
 
 interface MapMarker {
@@ -19,7 +19,7 @@ const ATTRIBUTION =
 	styleUrl: './map.component.scss',
 })
 export class MapComponent {
-	private readonly _themeService = inject(ThemeService);
+	private readonly _themeState = inject(ThemeState);
 	private _leaflet?: typeof import('leaflet');
 	private _map?: Map;
 	private _tiles?: TileLayer;
@@ -73,7 +73,7 @@ export class MapComponent {
 				this.markers.map((marker) => marker.coordinates),
 				{ padding: [40, 40] },
 			);
-			this._updateTiles(this._themeService.mode() ?? 'light');
+			this._updateTiles(this._themeState.mode() ?? 'light');
 
 			for (const marker of this.markers) {
 				this._leaflet
@@ -99,7 +99,7 @@ export class MapComponent {
 			}
 		});
 
-		effect(() => this._updateTiles(this._themeService.mode() ?? 'light'));
+		effect(() => this._updateTiles(this._themeState.mode() ?? 'light'));
 	}
 
 	private _updateTiles(mode: string): void {

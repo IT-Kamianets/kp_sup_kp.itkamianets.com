@@ -1,40 +1,22 @@
 import { Component, computed, signal } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { TranslateDirective } from '@wawjs/ngx-translate';
-
-type RankingPeriod = 'weekly' | 'monthly' | 'yearly';
-
-interface RankingEntry {
-	name: string;
-	points: number;
-}
-
-const RANKINGS: Record<RankingPeriod, RankingEntry[]> = {
-	weekly: [
-		{ name: '@olena.paddle', points: 124 },
-		{ name: '@andrii.river', points: 108 },
-		{ name: '@marta.sup', points: 96 },
-		{ name: '@dmytro.dnister', points: 82 },
-		{ name: '@iryna.flow', points: 73 },
-	],
-	monthly: [
-		{ name: '@andrii.river', points: 468 },
-		{ name: '@olena.paddle', points: 442 },
-		{ name: '@dmytro.dnister', points: 394 },
-		{ name: '@iryna.flow', points: 378 },
-		{ name: '@marta.sup', points: 351 },
-	],
-	yearly: [
-		{ name: '@dmytro.dnister', points: 2140 },
-		{ name: '@andrii.river', points: 2035 },
-		{ name: '@olena.paddle', points: 1988 },
-		{ name: '@marta.sup', points: 1742 },
-		{ name: '@iryna.flow', points: 1690 },
-	],
-};
+import { SelectButtonModule } from '@wawjs/ngx-prime/selectbutton';
+import { ButtonModule } from '@wawjs/ngx-prime/button';
+import { ParticipatorShortComponent } from '../../features/participator/participator-short/participator-short.component';
+import { RANKINGS } from '../../features/participator/participator.data';
+import { RankingPeriod } from '../../features/participator/participator.interface';
 
 @Component({
-	imports: [RouterLink, TranslateDirective],
+	imports: [
+		RouterLink,
+		TranslateDirective,
+		FormsModule,
+		SelectButtonModule,
+		ButtonModule,
+		ParticipatorShortComponent,
+	],
 	templateUrl: './ranking.component.html',
 	styleUrl: './ranking.component.scss',
 })

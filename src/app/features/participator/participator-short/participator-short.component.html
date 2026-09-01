@@ -1,0 +1,7 @@
+<article class="short">
+	<p-tag class="short__position" [value]="'#' + position" severity="secondary" rounded />
+	<a class="short__name" [routerLink]="['/participator']" [queryParams]="{ username: queryUsername }">{{
+		entity.username
+	}}</a>
+	<p-tag class="short__points" [value]="entity.points + ' балів'" severity="success" />
+</article>

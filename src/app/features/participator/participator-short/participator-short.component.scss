@@ -1,0 +1,27 @@
+.short {
+	display: flex;
+	align-items: center;
+	gap: var(--sp-3);
+	padding: var(--sp-2) var(--sp-3);
+	border-bottom: 1px solid var(--c-border);
+}
+
+.short__position {
+	flex: 0 0 auto;
+}
+
+.short__name {
+	flex: 1 1 auto;
+	min-width: 0;
+	color: var(--c-text-secondary);
+	font-weight: 600;
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+.short__points {
+	flex: 0 0 auto;
+}

@@ -66,18 +66,8 @@ h1 {
 	color: var(--c-text-strong);
 	font-weight: 800;
 }
-.score-preview div {
+.score-preview__bar {
 	height: 0.7rem;
-	overflow: hidden;
-	border-radius: 999px;
-	background: color-mix(in srgb, var(--c-border) 70%, transparent);
-}
-.score-preview i {
-	display: block;
-	width: 82%;
-	height: 100%;
-	border-radius: inherit;
-	background: var(--c-primary);
 }
 .score-preview strong {
 	color: var(--c-primary);
@@ -101,8 +91,7 @@ h2 {
 	background: var(--c-bg-primary);
 	padding: 1.25rem;
 }
-.steps span,
-.challenge-number {
+.steps span {
 	color: var(--c-primary);
 	font-size: 0.75rem;
 	font-weight: 800;
@@ -112,8 +101,7 @@ h2 {
 	margin-top: 0.8rem;
 	font-size: 1.05rem;
 }
-.steps p,
-.challenge-card p {
+.steps p {
 	margin-top: 0.5rem;
 	color: var(--c-text);
 	line-height: 1.6;
@@ -146,8 +134,7 @@ h2 {
 	color: var(--c-text);
 	font-size: 0.9rem;
 }
-.examples strong,
-.challenge-points {
+.examples strong {
 	color: var(--c-primary);
 }
 .section-description {
@@ -160,37 +147,12 @@ h2 {
 	gap: 0.75rem;
 	margin-top: 1.5rem;
 }
-.challenge-card {
-	display: grid;
-	grid-template-columns: 3.25rem minmax(0, 1fr);
-	gap: 0.75rem;
-	align-items: start;
-	border: 1px solid var(--c-border);
-	border-radius: var(--radius-card);
-	background: var(--c-bg-primary);
-	padding: 1rem;
-}
-.challenge-card h3 {
-	font-size: 1.05rem;
-	line-height: 1.25;
-}
-.challenge-points {
-	grid-column: 2;
-	font-size: 1.5rem;
-	line-height: 1;
-	white-space: nowrap;
-}
-.challenge-points small {
-	font-size: 0.75rem;
-}
 .safety {
 	display: grid;
 	grid-template-columns: auto 1fr;
 	gap: 1rem;
 	margin-top: 1rem;
 	padding: clamp(1.25rem, 4vw, 2.5rem);
-	border-color: color-mix(in srgb, var(--c-primary) 55%, var(--c-border));
-	background: color-mix(in srgb, var(--c-primary) 10%, var(--c-bg-secondary));
 }
 .safety > span {
 	color: var(--c-primary);
@@ -238,13 +200,5 @@ h2 {
 	}
 	.examples {
 		grid-template-columns: repeat(3, 1fr);
-	}
-	.challenge-card {
-		grid-template-columns: 3.25rem minmax(0, 1fr) auto;
-		align-items: center;
-	}
-	.challenge-points {
-		grid-column: auto;
-		text-align: right;
 	}
 }

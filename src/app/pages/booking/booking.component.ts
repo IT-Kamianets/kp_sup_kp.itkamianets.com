@@ -1,14 +1,14 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
+import { MessageService } from '@wawjs/ngx-prime/api';
+import { ButtonModule } from '@wawjs/ngx-prime/button';
+import { InputTextModule } from '@wawjs/ngx-prime/inputtext';
+import { JourneyShortComponent } from '../../features/journey/journey-short/journey-short.component';
+import { journeys } from '../../features/journey/journey.data';
+import { JourneyOption } from '../../features/journey/journey.interface';
 
 interface BookingDate {
 	label: string;
 	value: string;
-}
-
-interface JourneyOption {
-	duration: string;
-	id: string;
-	name: string;
 }
 
 interface ExistingBooking {
@@ -19,10 +19,12 @@ interface ExistingBooking {
 const START_HOURS = Array.from({ length: 11 }, (_, index) => index + 8);
 
 @Component({
+	imports: [ButtonModule, InputTextModule, JourneyShortComponent],
 	templateUrl: './booking.component.html',
 	styleUrl: './booking.component.scss',
 })
 export class BookingComponent {
+	private readonly _messageService = inject(MessageService);
 	private readonly _today = _startOfDay(new Date());
 	protected readonly selectedDate = signal(_toIsoDate(this._today));
 	protected readonly selectedJourney = signal<string | null>(null);
@@ -30,17 +32,7 @@ export class BookingComponent {
 	protected readonly name = signal('');
 	protected readonly phone = signal('');
 	protected readonly submitted = signal(false);
-	protected readonly journeys: JourneyOption[] = [
-		{ id: 'ustia', name: 'Ustia Beach', duration: '2 h' },
-		{ id: 'usamitnenyi', name: 'Usamitnenyi camping beach', duration: '2 h' },
-		{ id: 'monastery', name: 'Subitskyi Rock Monastery', duration: '2 h' },
-		{ id: 'ark', name: 'Ark recreation base', duration: '2 h' },
-		{ id: 'sunrise', name: 'Sunrise estate', duration: '2 h' },
-		{ id: 'bakota-house', name: 'Bakota House', duration: '2 h' },
-		{ id: 'route-1', name: 'Ustia to Usamitnenyi', duration: '3 h' },
-		{ id: 'route-2', name: 'Subitskyi Monastery to Ark', duration: '4 h' },
-		{ id: 'route-3', name: 'Sunrise to Bakota House', duration: '5 h' },
-	];
+	protected readonly journeys: JourneyOption[] = journeys;
 	protected readonly selectedJourneyOption = computed(() =>
 		this.journeys.find((journey) => journey.id === this.selectedJourney()),
 	);
@@ -88,6 +80,11 @@ export class BookingComponent {
 	protected submit(): void {
 		if (this.name().trim() && this.phone().trim()) {
 			this.submitted.set(true);
+			this._messageService.add({
+				severity: 'success',
+				summary: 'Готово',
+				detail: 'Вашу заявку на бронювання готово до надсилання.',
+			});
 		}
 	}
 }

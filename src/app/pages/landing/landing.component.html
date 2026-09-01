@@ -4,9 +4,7 @@
 	<div class="landing-orb landing-orb--secondary" aria-hidden="true"></div>
 
 	<section class="relative mx-auto max-w-[var(--container)] px-4 py-10 sm:px-6 sm:py-16">
-		<div
-			class="overflow-hidden rounded-[calc(var(--radius-card)*2.4)] border border-[color:color-mix(in_srgb,var(--c-border)_72%,transparent)] bg-[color:color-mix(in_srgb,var(--c-bg-secondary)_88%,transparent)] p-6 shadow-[var(--shadow-md)] backdrop-blur-xl sm:p-10 lg:p-14"
-		>
+		<p-card styleClass="hero-card">
 			<h1
 				class="text-sm font-semibold uppercase tracking-[0.22em] text-[var(--c-primary)]"
 				translate="SUP пригоди на Дністрі"
@@ -33,14 +31,8 @@
 						природою та відпочинком.
 					</p>
 					<div class="mt-8 flex flex-wrap gap-3">
-						<a
-							class="theme-focus inline-flex min-h-12 items-center rounded-full bg-[var(--c-primary)] px-6 py-3 text-sm font-semibold text-[var(--c-on-primary)]"
-							href="#routes"
-							>Обрати маршрут</a
-						>
-						<a
-							class="theme-focus inline-flex min-h-12 items-center rounded-full border border-[var(--c-border)] bg-[var(--c-bg-primary)] px-6 py-3 text-sm font-semibold text-[var(--c-text-strong)] hover:border-[var(--c-primary)]"
-							routerLink="/book"
+						<a pButton class="theme-focus" rounded href="#routes">Обрати маршрут</a>
+						<a pButton class="theme-focus" rounded outlined routerLink="/book"
 							>Забронювати</a
 						>
 					</div>
@@ -69,25 +61,17 @@
 				</div>
 			</div>
 
-			<ul class="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-				<li class="advantage-card">
-					<span aria-hidden="true">🚐</span> Трансфер з Кам'янця-Подільського
+			<ul class="mt-10 flex flex-wrap gap-3">
+				<li>
+					<p-tag styleClass="advantage-tag" value="🚐 Трансфер з Кам'янця-Подільського" />
 				</li>
-				<li class="advantage-card">
-					<span aria-hidden="true">🏄</span> SUP-дошка та спорядження
-				</li>
-				<li class="advantage-card">
-					<span aria-hidden="true">👥</span> Міні-групи до 4 осіб
-				</li>
-				<li class="advantage-card">
-					<span aria-hidden="true">🦺</span> Інструктаж і жилет
-				</li>
-				<li class="advantage-card"><span aria-hidden="true">📸</span> Фото та відео</li>
-				<li class="advantage-card">
-					<span aria-hidden="true">🌊</span> Авторські маршрути Дністром
-				</li>
+				<li><p-tag styleClass="advantage-tag" value="🏄 SUP-дошка та спорядження" /></li>
+				<li><p-tag styleClass="advantage-tag" value="👥 Міні-групи до 4 осіб" /></li>
+				<li><p-tag styleClass="advantage-tag" value="🦺 Інструктаж і жилет" /></li>
+				<li><p-tag styleClass="advantage-tag" value="📸 Фото та відео" /></li>
+				<li><p-tag styleClass="advantage-tag" value="🌊 Авторські маршрути Дністром" /></li>
 			</ul>
-		</div>
+		</p-card>
 	</section>
 
 	<section class="page-section">
@@ -129,111 +113,71 @@
 				маршрут має власну довжину, тривалість, складність та вартість.
 			</p>
 		</div>
-		<div class="mt-8 grid gap-4 md:grid-cols-3">
-			<article class="route-card">
-				<p class="route-card__number">01</p>
-				<h3 translate="Ð£ÑÑ‚Ñ â†’ Ð£ÑÐ°Ð¼Ñ–Ñ‚Ð½ÐµÐ½Ð¸Ð¹">
-					Ð£ÑÑ‚Ñ â†’ Ð£ÑÐ°Ð¼Ñ–Ñ‚Ð½ÐµÐ½Ð¸Ð¹
-				</h3>
-				<p
-					translate="ÐœÐ°Ñ€ÑˆÑ€ÑƒÑ‚ Ð¼Ñ–Ð¶ Ð¿Ð»ÑÐ¶ÐµÐ¼ Ñƒ ÑÐµÐ»Ñ– Ð£ÑÑ‚Ñ Ñ‚Ð° ÐºÐµÐ¼Ð¿Ñ–Ð½Ð³Ð¾Ð¼ Â«Ð£ÑÐ°Ð¼Ñ–Ñ‚Ð½ÐµÐ½Ð¸Ð¹Â»."
-				>
-					ÐœÐ°Ñ€ÑˆÑ€ÑƒÑ‚ Ð¼Ñ–Ð¶ Ð¿Ð»ÑÐ¶ÐµÐ¼ Ñƒ ÑÐµÐ»Ñ– Ð£ÑÑ‚Ñ Ñ‚Ð° ÐºÐµÐ¼Ð¿Ñ–Ð½Ð³Ð¾Ð¼
-					Â«Ð£ÑÐ°Ð¼Ñ–Ñ‚Ð½ÐµÐ½Ð¸Ð¹Â».
-				</p>
-				<a class="theme-focus" routerLink="/map" translate="Ð’Ñ–Ð´ÐºÑ€Ð¸Ñ‚Ð¸ Ð½Ð° Ð¼Ð°Ð¿Ñ–"
-					>Ð’Ñ–Ð´ÐºÑ€Ð¸Ñ‚Ð¸ Ð½Ð° Ð¼Ð°Ð¿Ñ–</a
-				>
-			</article>
-			<article class="route-card">
-				<p class="route-card__number">02</p>
-				<h3 translate="Ð¡ÑƒÐ±Ñ–Ñ†ÑŒÐºÐ¸Ð¹ Ð¼Ð¾Ð½Ð°ÑÑ‚Ð¸Ñ€ â†’ Ark">
-					Ð¡ÑƒÐ±Ñ–Ñ†ÑŒÐºÐ¸Ð¹ Ð¼Ð¾Ð½Ð°ÑÑ‚Ð¸Ñ€ â†’ Ark
-				</h3>
-				<p
-					translate="ÐœÐ°Ñ€ÑˆÑ€ÑƒÑ‚ Ð²Ñ–Ð´ Ð¡ÑƒÐ±Ñ–Ñ†ÑŒÐºÐ¾Ð³Ð¾ ÑÐºÐµÐ»ÑŒÐ½Ð¾Ð³Ð¾ Ð¼Ð¾Ð½Ð°ÑÑ‚Ð¸Ñ€Ñ Ð´Ð¾ Ð±Ð°Ð·Ð¸ Ð²Ñ–Ð´Ð¿Ð¾Ñ‡Ð¸Ð½ÐºÑƒ Ark."
-				>
-					ÐœÐ°Ñ€ÑˆÑ€ÑƒÑ‚ Ð²Ñ–Ð´ Ð¡ÑƒÐ±Ñ–Ñ†ÑŒÐºÐ¾Ð³Ð¾ ÑÐºÐµÐ»ÑŒÐ½Ð¾Ð³Ð¾ Ð¼Ð¾Ð½Ð°ÑÑ‚Ð¸Ñ€Ñ
-					Ð´Ð¾ Ð±Ð°Ð·Ð¸ Ð²Ñ–Ð´Ð¿Ð¾Ñ‡Ð¸Ð½ÐºÑƒ Ark.
-				</p>
-				<a class="theme-focus" routerLink="/map" translate="Ð’Ñ–Ð´ÐºÑ€Ð¸Ñ‚Ð¸ Ð½Ð° Ð¼Ð°Ð¿Ñ–"
-					>Ð’Ñ–Ð´ÐºÑ€Ð¸Ñ‚Ð¸ Ð½Ð° Ð¼Ð°Ð¿Ñ–</a
-				>
-			</article>
-			<article class="route-card">
-				<p class="route-card__number">03</p>
-				<h3 translate="Sunrise â†’ Bakota House">Sunrise â†’ Bakota House</h3>
-				<p
-					translate="ÐœÐ°Ñ€ÑˆÑ€ÑƒÑ‚ Ð²Ñ–Ð´ ÑÐ°Ð´Ð¸Ð±Ð¸ Sunrise Ð´Ð¾ Bakota House Ñƒ Ð¼Ð°Ð»ÑŒÐ¾Ð²Ð½Ð¸Ñ… Ð¼Ñ–ÑÑ†ÑÑ… Ð”Ð½Ñ–ÑÑ‚Ñ€Ð°."
-				>
-					ÐœÐ°Ñ€ÑˆÑ€ÑƒÑ‚ Ð²Ñ–Ð´ ÑÐ°Ð´Ð¸Ð±Ð¸ Sunrise Ð´Ð¾ Bakota House Ñƒ
-					Ð¼Ð°Ð»ÑŒÐ¾Ð²Ð½Ð¸Ñ… Ð¼Ñ–ÑÑ†ÑÑ… Ð”Ð½Ñ–ÑÑ‚Ñ€Ð°.
-				</p>
-				<a class="theme-focus" routerLink="/map" translate="Ð’Ñ–Ð´ÐºÑ€Ð¸Ñ‚Ð¸ Ð½Ð° Ð¼Ð°Ð¿Ñ–"
-					>Ð’Ñ–Ð´ÐºÑ€Ð¸Ñ‚Ð¸ Ð½Ð° Ð¼Ð°Ð¿Ñ–</a
-				>
-			</article>
-		</div>
-		<section class="points-promo">
-			<div>
-				<p>SUP Points</p>
-				<h2>Заробляй до 100 балів за одну поїздку</h2>
-				<span>Знімай свої пригоди, виконуй SUP-челенджі та заробляй бали.</span>
+
+		<p-card styleClass="points-promo-card">
+			<div class="points-promo grid gap-6 md:grid-cols-[1.1fr_1fr] md:items-center">
+				<div>
+					<p translate="SUP Points">SUP Points</p>
+					<h2 translate="Заробляй до 100 балів за одну поїздку">
+						Заробляй до 100 балів за одну поїздку
+					</h2>
+					<span translate="Знімай свої пригоди, виконуй SUP-челенджі та заробляй бали.">
+						Знімай свої пригоди, виконуй SUP-челенджі та заробляй бали.
+					</span>
+					<div class="mt-4">
+						<a pButton class="theme-focus" rounded outlined routerLink="/points"
+							>Переглянути всі 100 челенджів</a
+						>
+					</div>
+				</div>
+				<div class="points-promo__examples" aria-label="Приклади SUP-челенджів">
+					<p>
+						<b>SUP → вода</b>
+						<p-tag value="20 балів" />
+					</p>
+					<p>
+						<b>360° на SUP</b>
+						<p-tag value="35 балів" />
+					</p>
+					<p>
+						<b>Master Challenge</b>
+						<p-tag severity="warn" value="100 балів" />
+					</p>
+				</div>
 			</div>
-			<div class="points-promo__examples" aria-label="Приклади SUP-челенджів">
-				<p><b>SUP → вода</b><span>20 балів</span></p>
-				<p><b>360° на SUP</b><span>35 балів</span></p>
-				<p><b>Master Challenge</b><span>100 балів</span></p>
-			</div>
-			<a class="theme-focus" routerLink="/points">Переглянути всі 100 челенджів</a>
-		</section>
+		</p-card>
 
 		<div class="route-list mt-8 grid gap-4 md:grid-cols-3">
-			<article>
+			<p-card styleClass="route-card">
 				<p>01</p>
 				<h3 translate="Устя — Усамітнений">Устя — Усамітнений</h3>
 				<span translate="Від пляжу в Усті до кемпінгу «Усамітнений»"
 					>Від пляжу в Усті до кемпінгу «Усамітнений»</span
 				>
-				<a class="theme-focus" routerLink="/book" translate="Забронювати">Забронювати</a>
-			</article>
-			<article>
+				<a pButton class="theme-focus" variant="text" routerLink="/book" translate="Забронювати"
+					>Забронювати</a
+				>
+			</p-card>
+			<p-card styleClass="route-card">
 				<p>02</p>
 				<h3 translate="Субічський монастир — Арк">Субічський монастир — Арк</h3>
 				<span translate="Від скельного монастиря до бази відпочинку Арк"
 					>Від скельного монастиря до бази відпочинку Арк</span
 				>
-				<a class="theme-focus" routerLink="/book" translate="Забронювати">Забронювати</a>
-			</article>
-			<article>
+				<a pButton class="theme-focus" variant="text" routerLink="/book" translate="Забронювати"
+					>Забронювати</a
+				>
+			</p-card>
+			<p-card styleClass="route-card">
 				<p>03</p>
 				<h3 translate="Sunrise — Bakota House">Sunrise — Bakota House</h3>
 				<span translate="Від садиби Sunrise до Bakota House"
 					>Від садиби Sunrise до Bakota House</span
 				>
-				<a class="theme-focus" routerLink="/book" translate="Забронювати">Забронювати</a>
-			</article>
-		</div>
-		<div class="hidden">
-			<p class="text-3xl" aria-hidden="true">🗺️</p>
-			<p
-				class="mt-4 text-xl font-semibold text-[var(--c-text-strong)]"
-				translate="Каталог маршрутів готується"
-			>
-				Каталог маршрутів готується
-			</p>
-			<p
-				class="mx-auto mt-3 max-w-2xl text-sm leading-7 text-[var(--c-text)]"
-				translate="Зателефонуйте — допоможемо підібрати актуальний маршрут за тривалістю, складністю та вашими побажаннями."
-			>
-				Зателефонуйте — допоможемо підібрати актуальний маршрут за тривалістю, складністю та
-				вашими побажаннями.
-			</p>
-			<a
-				class="theme-focus mt-6 inline-flex min-h-12 items-center rounded-full bg-[var(--c-primary)] px-6 py-3 text-sm font-semibold text-[var(--c-on-primary)]"
-				href="tel:+380971862487"
-				>Дізнатися про маршрути</a
-			>
+				<a pButton class="theme-focus" variant="text" routerLink="/book" translate="Забронювати"
+					>Забронювати</a
+				>
+			</p-card>
 		</div>
 	</section>
 
@@ -245,30 +189,30 @@
 			</h2>
 		</div>
 		<div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-			<article class="feature-card">
+			<p-card styleClass="feature-card">
 				<span aria-hidden="true">👥</span>
 				<h3 translate="Невеликі групи">Невеликі групи</h3>
-			</article>
-			<article class="feature-card">
+			</p-card>
+			<p-card styleClass="feature-card">
 				<span aria-hidden="true">🧭</span>
 				<h3 translate="Перевірені маршрути">Перевірені маршрути</h3>
-			</article>
-			<article class="feature-card">
+			</p-card>
+			<p-card styleClass="feature-card">
 				<span aria-hidden="true">🦺</span>
 				<h3 translate="Безпечне спорядження">Безпечне спорядження</h3>
-			</article>
-			<article class="feature-card">
+			</p-card>
+			<p-card styleClass="feature-card">
 				<span aria-hidden="true">🚐</span>
 				<h3 translate="Трансфер включено">Трансфер включено</h3>
-			</article>
-			<article class="feature-card">
+			</p-card>
+			<p-card styleClass="feature-card">
 				<span aria-hidden="true">🏞️</span>
 				<h3 translate="Красиві локації">Красиві локації</h3>
-			</article>
-			<article class="feature-card">
+			</p-card>
+			<p-card styleClass="feature-card">
 				<span aria-hidden="true">🤝</span>
 				<h3 translate="Допомога новачкам">Допомога новачкам</h3>
-			</article>
+			</p-card>
 		</div>
 	</section>
 
@@ -280,32 +224,12 @@
 					Як проходить пригода?
 				</h2>
 			</div>
-			<ol class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-				<li class="step-card">
-					<span>01</span>
-					<p translate="Бронювання маршруту">Бронювання маршруту</p>
-				</li>
-				<li class="step-card">
-					<span>02</span>
-					<p translate="Виїзд із Кам'янця-Подільського">Виїзд із Кам'янця-Подільського</p>
-				</li>
-				<li class="step-card">
-					<span>03</span>
-					<p translate="Інструктаж та підготовка">Інструктаж та підготовка</p>
-				</li>
-				<li class="step-card">
-					<span>04</span>
-					<p translate="SUP-подорож Дністром">SUP-подорож Дністром</p>
-				</li>
-				<li class="step-card">
-					<span>05</span>
-					<p translate="Фініш маршруту">Фініш маршруту</p>
-				</li>
-				<li class="step-card">
-					<span>06</span>
-					<p translate="Повернення до Кам'янця">Повернення до Кам'янця</p>
-				</li>
-			</ol>
+			<p-timeline [value]="steps" styleClass="mt-8 process-timeline" layout="horizontal">
+				<ng-template #content let-step>
+					<span class="process-timeline__number">{{ step.number }}</span>
+					<p>{{ translateService.translate(step.title)() }}</p>
+				</ng-template>
+			</p-timeline>
 		</div>
 	</section>
 
@@ -364,17 +288,19 @@
 			<p class="section-kicker" translate="Перед подорожжю">Перед подорожжю</p>
 			<h2 class="section-title" translate="Поширені запитання">Поширені запитання</h2>
 		</div>
-		<div class="mt-8 grid gap-3 lg:grid-cols-2">
-			<p class="question-card" translate="Чи потрібен досвід?">Чи потрібен досвід?</p>
-			<p class="question-card" translate="Чи безпечно це?">Чи безпечно це?</p>
-			<p class="question-card" translate="Що взяти із собою?">Що взяти із собою?</p>
-			<p class="question-card" translate="Чи можна дітям?">Чи можна дітям?</p>
-			<p class="question-card lg:col-span-2" translate="Яка максимальна кількість людей?">
-				Яка максимальна кількість людей?
-			</p>
-		</div>
+		<p-accordion class="mt-8 block">
+			@for (item of faq; track item.question) {
+				<p-accordionpanel [value]="item.question">
+					<p-accordionheader>{{ translateService.translate(item.question)() }}</p-accordionheader>
+					<p-accordioncontent>{{ translateService.translate(item.answer)() }}</p-accordioncontent>
+				</p-accordionpanel>
+			}
+		</p-accordion>
 		<a
-			class="theme-focus mt-6 inline-flex min-h-12 items-center rounded-full border border-[var(--c-border)] bg-[var(--c-bg-secondary)] px-6 py-3 text-sm font-semibold text-[var(--c-text-strong)] hover:border-[var(--c-primary)]"
+			pButton
+			class="theme-focus mt-6"
+			rounded
+			outlined
 			href="mailto:info@itkamianets.com?subject=Запитання%20про%20SUP-пригоду"
 			>Усі запитання</a
 		>
@@ -397,16 +323,8 @@
 				Обирайте маршрут, бронюйте місце та відкривайте Дністер разом із KP - SUP - KP.
 			</p>
 			<div class="mt-8 flex flex-wrap justify-center gap-3">
-				<a
-					class="theme-focus inline-flex min-h-12 items-center rounded-full bg-[var(--c-primary)] px-6 py-3 text-sm font-semibold text-[var(--c-on-primary)]"
-					href="#routes"
-					>Переглянути маршрути</a
-				>
-				<a
-					class="theme-focus inline-flex min-h-12 items-center rounded-full border border-current px-6 py-3 text-sm font-semibold"
-					routerLink="/book"
-					>Забронювати</a
-				>
+				<a pButton class="theme-focus" rounded href="#routes">Переглянути маршрути</a>
+				<a pButton class="theme-focus" rounded outlined routerLink="/book">Забронювати</a>
 			</div>
 		</div>
 	</section>

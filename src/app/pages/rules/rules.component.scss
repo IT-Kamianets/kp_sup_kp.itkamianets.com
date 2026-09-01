@@ -89,9 +89,10 @@
 }
 .rules-content section {
 	scroll-margin-top: 6rem;
+}
+.rules-content .confirmation {
 	border: 1px solid var(--c-border);
 	border-radius: calc(var(--radius-card) * 1.5);
-	background: var(--c-bg-secondary);
 	padding: clamp(1.4rem, 4vw, 2.5rem);
 	box-shadow: var(--shadow-sm);
 }
@@ -140,12 +141,7 @@
 	margin-top: 0.65rem;
 }
 .confirmation a {
-	display: inline-flex;
 	margin-top: 1.5rem;
-	border-radius: 999px;
-	background: var(--c-primary);
-	padding: 0.8rem 1.25rem;
-	color: var(--c-on-primary);
 }
 @media (min-width: 768px) {
 	.rules-hero {

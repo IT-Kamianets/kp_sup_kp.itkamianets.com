@@ -1,8 +1,12 @@
-import { Component, effect, inject, signal } from '@angular/core';
+import { Component, computed, effect, inject, signal } from '@angular/core';
+import { ButtonModule } from '@wawjs/ngx-prime/button';
 import { TranslateService } from '@wawjs/ngx-translate';
-import { POINT_CHALLENGES, type PointChallenge } from '../../../data/points/challenges.data';
+import { ChallengeShortComponent } from '../../features/challenge/challenge-short/challenge-short.component';
+import { Challenge } from '../../features/challenge/challenge.interface';
+import { challenges } from '../../features/challenge/challenge.data';
 
 @Component({
+	imports: [ButtonModule, ChallengeShortComponent],
 	templateUrl: './challenges.component.html',
 	styleUrl: './challenges.component.scss',
 })
@@ -10,11 +14,13 @@ export class ChallengesComponent {
 	private readonly _translateService = inject(TranslateService);
 	private _startY = 0;
 	private _lastWheelAdvance = 0;
-	private _remaining = _shuffle([...POINT_CHALLENGES]);
-	protected readonly activeChallenge = signal<PointChallenge>(this._drawChallenge());
-	protected readonly nextChallenge = signal<PointChallenge>(this._drawChallenge());
+	private _remaining = _shuffle([...challenges]);
+	protected readonly activeChallenge = signal<Challenge>(this._drawChallenge());
+	protected readonly nextChallenge = signal<Challenge>(this._drawChallenge());
 	protected readonly isAdvancing = signal(false);
 	protected readonly isResetting = signal(false);
+	protected readonly activeChallengeView = computed(() => this._translateEntity(this.activeChallenge()));
+	protected readonly nextChallengeView = computed(() => this._translateEntity(this.nextChallenge()));
 
 	constructor() {
 		effect(() => {
@@ -58,8 +64,16 @@ export class ChallengesComponent {
 		return this._translateService.translate(text)();
 	}
 
-	private _drawChallenge(): PointChallenge {
-		if (!this._remaining.length) this._remaining = _shuffle([...POINT_CHALLENGES]);
+	private _translateEntity(challenge: Challenge): Challenge {
+		return {
+			...challenge,
+			title: this.translate(challenge.title),
+			description: this.translate(challenge.description),
+		};
+	}
+
+	private _drawChallenge(): Challenge {
+		if (!this._remaining.length) this._remaining = _shuffle([...challenges]);
 		return this._remaining.pop()!;
 	}
 }

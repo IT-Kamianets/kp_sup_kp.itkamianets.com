@@ -1,67 +1,11 @@
 <section class="profile-page">
 	<div class="profile-panel">
-		<header class="profile-header">
-			<div class="avatar" aria-hidden="true">{{ member().name.charAt(0) }}</div>
-			<div>
-				<h1>{{ member().username }}</h1>
-			</div>
-			<div class="points-summary">
-				<strong>{{ member().points }}</strong
-				><span translate="балів">балів</span>
-			</div>
-		</header>
-
-		@if (member().achievements.length) {
-			<section aria-labelledby="achievements-title">
-				<div class="section-heading">
-					<div>
-						<h2 id="achievements-title" translate="Досягнення">Досягнення</h2>
-					</div>
-					<span>🏆</span>
-				</div>
-
-				<ol class="achievements">
-					@for (achievement of member().achievements; track achievement.period) {
-						<li>
-							<span class="medal medal--{{ achievement.place }}" aria-hidden="true">
-								{{
-									achievement.place === 1
-										? '🥇'
-										: achievement.place === 2
-											? '🥈'
-											: '🥉'
-								}}
-							</span>
-							<div>
-								<strong [translate]="achievement.label">{{
-									achievement.label
-								}}</strong>
-								<span [translate]="achievement.period">{{
-									achievement.period
-								}}</span>
-							</div>
-							<span class="place">#{{ achievement.place }}</span>
-						</li>
-					}
-				</ol>
-			</section>
+		@if (!found) {
+			<p-message severity="warn" [closable]="false" translate="Учасника не знайдено. Показано приклад профілю.">
+				Учасника не знайдено. Показано приклад профілю.
+			</p-message>
 		}
 
-		@if (member().stories.length) {
-			<section class="stories-section" aria-labelledby="stories-title">
-				<div class="section-heading">
-					<h2 id="stories-title" translate="Історії">Історії</h2>
-					<span aria-hidden="true">◉</span>
-				</div>
-				<div class="stories">
-					@for (story of member().stories; track story.title) {
-						<a [href]="story.url" target="_blank" rel="noopener noreferrer">
-							<span>{{ story.title }}</span>
-							<span aria-hidden="true">↗</span>
-						</a>
-					}
-				</div>
-			</section>
-		}
+		<app-participator-view [entity]="participator()" />
 	</div>
 </section>

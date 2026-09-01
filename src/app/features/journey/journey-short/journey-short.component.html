@@ -1,0 +1,19 @@
+@if (variant === 'chip') {
+	<p-chip
+		class="journey-chip"
+		[label]="entity.name + ' · ' + entity.duration"
+		removable
+		(onRemove)="onSelect()"
+	/>
+} @else {
+	<button
+		class="journey-card"
+		[class.journey-card--selected]="selected"
+		(click)="onSelect()"
+		type="button"
+	>
+		<strong>{{ entity.name }}</strong>
+		<span>{{ entity.duration }}</span>
+		<em>3 000 грн</em>
+	</button>
+}

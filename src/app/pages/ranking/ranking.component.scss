@@ -30,65 +30,16 @@ h1 {
 }
 
 .periods {
-	display: grid;
-	grid-template-columns: repeat(3, minmax(0, 1fr));
-	gap: 0.5rem;
+	display: block;
 	margin-top: 2rem;
-}
-
-.period {
-	border: 1px solid var(--c-border);
-	border-radius: 999px;
-	background: var(--c-bg-primary);
-	padding: 0.7rem;
-	font-size: 0.875rem;
-	font-weight: 700;
-	color: var(--c-text);
-}
-
-.period--active {
-	border-color: var(--c-primary);
-	background: var(--c-primary);
-	color: var(--c-on-primary);
 }
 
 .leaderboard {
 	display: grid;
 	gap: 0.75rem;
 	margin-top: 2rem;
-}
-
-.leaderboard li {
-	display: grid;
-	grid-template-columns: 2.25rem 1fr auto;
-	align-items: center;
-	gap: 0.75rem;
-	border: 1px solid var(--c-border);
-	border-radius: var(--radius-card);
-	padding: 0.9rem;
-	color: var(--c-text-strong);
-}
-
-.leaderboard a {
-	color: var(--c-text-strong);
-	font-weight: 700;
-}
-
-.position {
-	display: grid;
-	height: 2rem;
-	width: 2rem;
-	place-items: center;
-	border-radius: 999px;
-	background: color-mix(in srgb, var(--c-primary) 15%, transparent);
-	font-weight: 800;
-	color: var(--c-primary);
-}
-
-.points {
-	font-size: 0.875rem;
-	font-weight: 700;
-	color: var(--c-primary);
+	list-style: none;
+	padding: 0;
 }
 
 .ranking-points {

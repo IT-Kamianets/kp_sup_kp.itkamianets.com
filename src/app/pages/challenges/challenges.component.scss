@@ -62,43 +62,16 @@
 	transition: none;
 }
 
-.challenge-card > p:first-child,
-.challenge-number {
+.challenge-card > p:first-child {
 	color: var(--c-primary);
 	font-size: 0.75rem;
 	font-weight: 800;
 	letter-spacing: 0.16em;
 	text-transform: uppercase;
 }
-.challenge-number {
+.challenge-card app-challenge-short {
 	display: block;
-	margin-top: 2.5rem;
-}
-h1,
-h2 {
-	margin-top: 0.75rem;
-	color: var(--c-text-strong);
-	font-size: clamp(2rem, 8vw, 4.5rem);
-	font-weight: 800;
-	line-height: 0.98;
-	letter-spacing: -0.05em;
-}
-.challenge-description {
 	margin-top: 1.5rem;
-	color: var(--c-text);
-	font-size: clamp(1.1rem, 4vw, 1.35rem);
-	line-height: 1.55;
-}
-.challenge-card strong {
-	display: block;
-	margin-top: auto;
-	padding-top: 2rem;
-	color: var(--c-primary);
-	font-size: clamp(2rem, 8vw, 3rem);
-	line-height: 1;
-}
-.challenge-card small {
-	font-size: 0.9rem;
 }
 .swipe-hint {
 	display: grid;

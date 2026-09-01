@@ -8,31 +8,20 @@
 			Перегляньте, хто набрав найбільше балів на річці.
 		</p>
 
-		<div class="periods" role="tablist" aria-label="Період рейтингу">
-			@for (item of periods; track item.value) {
-				<button
-					[class.period--active]="period() === item.value"
-					(click)="period.set(item.value)"
-					class="period"
-					type="button"
-				>
-					<span [translate]="item.label">{{ item.label }}</span>
-				</button>
-			}
-		</div>
+		<p-selectbutton
+			class="periods"
+			[options]="periods"
+			optionLabel="label"
+			optionValue="value"
+			[ngModel]="period()"
+			(ngModelChange)="period.set($event)"
+			aria-label="Період рейтингу"
+		/>
 
 		<ol class="leaderboard">
-			@for (entry of entries(); track entry.name; let position = $index) {
+			@for (entry of entries(); track entry.username; let position = $index) {
 				<li>
-					<span class="position">{{ position + 1 }}</span>
-					<a
-						[routerLink]="['/participator']"
-						[queryParams]="{ username: entry.name.slice(1) }"
-						>{{ entry.name }}</a
-					>
-					<span class="points"
-						>{{ entry.points }} <span translate="балів">балів</span></span
-					>
+					<app-participator-short [entity]="entry" [position]="position + 1" />
 				</li>
 			}
 		</ol>
@@ -40,7 +29,7 @@
 		<section class="ranking-points">
 			<h2>Як заробити більше балів?</h2>
 			<p>Виконуй SUP-челенджі, знімай їх у Story та піднімайся у рейтингу KP - SUP - KP.</p>
-			<a routerLink="/points">Переглянути челенджі</a>
+			<a pButton routerLink="/points">Переглянути челенджі</a>
 		</section>
 	</div>
 </section>

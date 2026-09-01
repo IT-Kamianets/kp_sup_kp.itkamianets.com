@@ -9,8 +9,8 @@
 			</p>
 			<div class="score-preview" aria-label="Максимум 100 балів за одну поїздку">
 				<span>0</span>
-				<div aria-hidden="true"><i></i></div>
-				<strong>100 балів</strong>
+				<p-progressbar [value]="currentPoints()" [showValue]="false" styleClass="score-preview__bar" />
+				<strong>{{ currentPoints() }} / 100 балів</strong>
 			</div>
 		</header>
 
@@ -75,23 +75,20 @@
 					твоїй SUP-пригоді.
 				</p>
 			</div>
-			<ol class="challenge-list">
-				@for (challenge of challenges; track challenge.id) {
-					<li class="challenge-card">
-						<span class="challenge-number">№{{ challenge.id }}</span>
-						<div>
-							<h3>{{ translate(challenge.title) }}</h3>
-							<p>{{ translate(challenge.description) }}</p>
-						</div>
-						<strong class="challenge-points"
-							>+{{ challenge.points }}<small> балів</small></strong
-						>
-					</li>
-				}
-			</ol>
+			<p-dataview [value]="challenges()" [paginator]="true" [rows]="20">
+				<ng-template #list let-items>
+					<ol class="challenge-list">
+						@for (challenge of items; track challenge.id) {
+							<li>
+								<app-challenge-short [entity]="challenge" variant="row" />
+							</li>
+						}
+					</ol>
+				</ng-template>
+			</p-dataview>
 		</section>
 
-		<aside class="safety" aria-labelledby="safety-title">
+		<p-message class="safety" severity="warn" [closable]="false">
 			<span class="material-symbols-outlined" aria-hidden="true">health_and_safety</span>
 			<div>
 				<h2 id="safety-title">Безпека важливіша за бали</h2>
@@ -106,7 +103,7 @@
 					кількості балів.
 				</p>
 			</div>
-		</aside>
+		</p-message>
 
 		<section class="points-cta">
 			<h2>Готовий заробити свої перші 100 балів?</h2>

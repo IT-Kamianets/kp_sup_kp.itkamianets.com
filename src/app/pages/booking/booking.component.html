@@ -4,7 +4,8 @@
 	<div class="date-list">
 		@for (date of dates(); track date.value) {
 			<button
-				[class.date-button--active]="selectedDate() === date.value"
+				pButton
+				[outlined]="selectedDate() !== date.value"
 				(click)="selectDate(date.value)"
 				class="date-button"
 				type="button"
@@ -17,23 +18,16 @@
 	<div class="journey-section">
 		<h2 class="picker-title">Оберіть подорож</h2>
 		@if (selectedJourneyOption(); as journey) {
-			<button
-				class="journey-card journey-card--selected"
-				(click)="clearJourney()"
-				type="button"
-			>
-				<strong>{{ journey.name }}</strong>
-				<span>{{ journey.duration }}</span>
-				<em>3 000 грн</em>
-			</button>
+			<app-journey-short [entity]="journey" variant="chip" (select)="clearJourney()" />
 		} @else {
 			<div class="journey-list">
 				@for (journey of journeys; track journey.id) {
-					<button (click)="selectJourney(journey.id)" class="journey-card" type="button">
-						<strong>{{ journey.name }}</strong>
-						<span>{{ journey.duration }}</span>
-						<em>3 000 грн</em>
-					</button>
+					<app-journey-short
+						[entity]="journey"
+						variant="card"
+						[selected]="false"
+						(select)="selectJourney(journey.id)"
+					/>
 				}
 			</div>
 		}
@@ -52,7 +46,8 @@
 			<div class="time-list">
 				@for (hour of startHours; track hour) {
 					<button
-						[class.time-button--active]="selectedStartHour() === hour"
+						pButton
+						[outlined]="selectedStartHour() !== hour"
 						[disabled]="!isStartAvailable(hour)"
 						(click)="selectedStartHour.set(hour)"
 						class="time-button"
@@ -70,6 +65,7 @@
 			<label>
 				<span>Ім’я</span>
 				<input
+					pInputText
 					[value]="name()"
 					(input)="name.set($any($event.target).value)"
 					autocomplete="name"
@@ -80,6 +76,7 @@
 			<label>
 				<span>Телефон</span>
 				<input
+					pInputText
 					[value]="phone()"
 					(input)="phone.set($any($event.target).value)"
 					autocomplete="tel"
@@ -88,10 +85,7 @@
 					type="tel"
 				/>
 			</label>
-			<button class="submit-button" type="submit">Надіслати заявку</button>
-			@if (submitted()) {
-				<p class="form-success">Вашу заявку на бронювання готово до надсилання.</p>
-			}
+			<button pButton class="submit-button" type="submit">Надіслати заявку</button>
 		</form>
 	}
 </section>
