@@ -65,6 +65,24 @@ export const routes: Routes = [
 		loadComponent: () => import('./pages/rules/rules.component').then((m) => m.RulesComponent),
 	},
 	{
+		path: 'guides',
+		data: {
+			seoKeywords:
+				'гід SUP, інструктор SUP, робота гідом SUP, кабінет гіда, SUP Кам’янець-Подільський, SUP Дністер',
+			meta: {
+				title: 'Кабінет гіда SUP-пригод',
+				titleSuffix: ' | KP - SUP - KP',
+				description:
+					'Кабінет гіда SUP-пригод: керування пригодами, учасниками, маршрутами, перевіркою безпеки, спорядженням та завершенням SUP-подорожей на Дністрі.',
+				image: buildAbsoluteUrl(companyProfile.siteUrl, '/social/home.png'),
+				robots: 'index, follow',
+				canonicalPath: '/guides',
+			},
+		},
+		loadChildren: () =>
+			import('./pages/for-guides/for-guides.routes').then((m) => m.routes),
+	},
+	{
 		path: 'map',
 		data: {
 			seoKeywords:
