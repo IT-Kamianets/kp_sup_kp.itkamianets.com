@@ -114,39 +114,6 @@
 			</p>
 		</div>
 
-		<p-card styleClass="points-promo-card">
-			<div class="points-promo grid gap-6 md:grid-cols-[1.1fr_1fr] md:items-center">
-				<div>
-					<p translate="SUP Points">SUP Points</p>
-					<h2 translate="Заробляй до 100 балів за одну поїздку">
-						Заробляй до 100 балів за одну поїздку
-					</h2>
-					<span translate="Знімай свої пригоди, виконуй SUP-челенджі та заробляй бали.">
-						Знімай свої пригоди, виконуй SUP-челенджі та заробляй бали.
-					</span>
-					<div class="mt-4">
-						<a pButton class="theme-focus" rounded outlined routerLink="/points"
-							>Переглянути всі 100 челенджів</a
-						>
-					</div>
-				</div>
-				<div class="points-promo__examples" aria-label="Приклади SUP-челенджів">
-					<p>
-						<b>SUP → вода</b>
-						<p-tag value="20 балів" />
-					</p>
-					<p>
-						<b>360° на SUP</b>
-						<p-tag value="35 балів" />
-					</p>
-					<p>
-						<b>Master Challenge</b>
-						<p-tag severity="warn" value="100 балів" />
-					</p>
-				</div>
-			</div>
-		</p-card>
-
 		<div class="route-list mt-8 grid gap-4 md:grid-cols-3">
 			<p-card styleClass="route-card">
 				<p>01</p>
@@ -179,6 +146,39 @@
 				>
 			</p-card>
 		</div>
+
+		<p-card styleClass="points-promo-card points-promo-card--subtle mt-8">
+			<div class="points-promo grid gap-6 md:grid-cols-[1.1fr_1fr] md:items-center">
+				<div>
+					<p translate="SUP Points">SUP Points</p>
+					<h3 translate="Заробляй до 100 балів за одну поїздку">
+						Заробляй до 100 балів за одну поїздку
+					</h3>
+					<span translate="Знімай свої пригоди, виконуй SUP-челенджі та заробляй бали.">
+						Знімай свої пригоди, виконуй SUP-челенджі та заробляй бали.
+					</span>
+					<div class="mt-4">
+						<a pButton class="theme-focus" rounded outlined routerLink="/points"
+							>Переглянути всі 100 челенджів</a
+						>
+					</div>
+				</div>
+				<div class="points-promo__examples" aria-label="Приклади SUP-челенджів">
+					<p>
+						<b>SUP → вода</b>
+						<p-tag value="20 балів" />
+					</p>
+					<p>
+						<b>360° на SUP</b>
+						<p-tag value="35 балів" />
+					</p>
+					<p>
+						<b>Master Challenge</b>
+						<p-tag severity="warn" value="100 балів" />
+					</p>
+				</div>
+			</div>
+		</p-card>
 	</section>
 
 	<section class="page-section">
@@ -291,8 +291,8 @@
 		<p-accordion class="mt-8 block">
 			@for (item of faq; track item.question) {
 				<p-accordionpanel [value]="item.question">
-					<p-accordionheader>{{ translateService.translate(item.question)() }}</p-accordionheader>
-					<p-accordioncontent>{{ translateService.translate(item.answer)() }}</p-accordioncontent>
+					<p-accordionheader [panel]="$any(content)">{{ translateService.translate(item.question)() }}</p-accordionheader>
+					<p-accordioncontent #content="ngAccordionPanel">{{ translateService.translate(item.answer)() }}</p-accordioncontent>
 				</p-accordionpanel>
 			}
 		</p-accordion>

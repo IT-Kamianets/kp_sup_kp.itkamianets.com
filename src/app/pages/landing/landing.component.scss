@@ -158,6 +158,12 @@
 	background: color-mix(in srgb, var(--c-primary) 8%, var(--c-bg-secondary)) !important;
 }
 
+.points-promo-card--subtle {
+	border: 1px solid var(--c-border) !important;
+	background: color-mix(in srgb, var(--c-bg-primary) 90%, transparent) !important;
+	box-shadow: none !important;
+}
+
 .points-promo > div > p {
 	color: var(--c-primary);
 	font-size: 0.75rem;
@@ -166,11 +172,17 @@
 	text-transform: uppercase;
 }
 
-.points-promo h2 {
+.points-promo h2,
+.points-promo h3 {
 	margin-top: 0.6rem;
 	font-size: clamp(1.45rem, 4vw, 2rem);
 	font-weight: 700;
 	color: var(--c-text-strong);
+}
+
+.points-promo-card--subtle .points-promo h3 {
+	font-size: clamp(1.1rem, 2.4vw, 1.35rem);
+	font-weight: 600;
 }
 
 .points-promo > div > span {
