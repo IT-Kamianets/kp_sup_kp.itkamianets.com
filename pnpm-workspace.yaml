@@ -1,0 +1,9 @@
+allowBuilds:
+  '@parcel/watcher': set this to true or false
+  '@tailwindcss/oxide': set this to true or false
+  esbuild: set this to true or false
+  lmdb: set this to true or false
+  msgpackr-extract: set this to true or false
+minimumReleaseAgeExclude:
+  - '@wawjs/ngx-core@22.0.6'
+  - '@wawjs/ngx-translate@22.0.6'
