@@ -1,0 +1,1 @@
+var o=[{path:``,loadComponent:()=>import(`./chunk-CDmDlA9M.js`).then(e=>e.ForGuidesComponent)}];export{o as routes};

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kp_sup_kp.itkamianets.com/sitemap.xml
